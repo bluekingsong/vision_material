@@ -1,0 +1,1143 @@
+====Input Arguments====
+{
+  "model_name": "/data/oss_bucket_0/kesi/genret/Qwen3-4B",
+  "num_subnode": 10,
+  "tree_depth": 2,
+  "active_depth": 0,
+  "dump_model_steps": 1000,
+  "train_filename": "/data/oss_bucket_0/kesi/genret/dataset/nq320k/train.qg.full.jsonl",
+  "dev_filename": "/data/oss_bucket_0/kesi/genret/dataset/nq320k/dev.jsonl",
+  "corpus_filename": "/data/oss_bucket_0/kesi/genret/dataset/nq320k/corpus_lite.jsonl",
+  "dev_corpus_filename": null,
+  "doc_id_list_file": "/data/oss_bucket_0/kesi/genret/dataset/nq320k/doc_id_list.json",
+  "save_path": "/data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0",
+  "load_path": null,
+  "epochs": 150,
+  "sinkhorn_epsilon": 0.08,
+  "split_group_size": 2,
+  "i2c_temperature": 0.1,
+  "leaf_temp": 0.05,
+  "lr": 0.0001,
+  "warmup_ratio": 0.01,
+  "acc_thres": 0.5,
+  "balance_thres": [
+    10000.0,
+    10000.0
+  ],
+  "doc_index_first": false,
+  "remove_params": "",
+  "local_rank": 0,
+  "deepspeed_config": "ds_config.json",
+  "cl_weight": 0.5,
+  "leaf_cl_factor": 1,
+  "leaf_node_size": 0,
+  "max_doc_tokens": 128,
+  "max_query_tokens": 128,
+  "beam_size_limit": 8,
+  "random_max_query_tokens": null,
+  "num_workers": 4,
+  "batch_size": 128,
+  "beam_doc_topk": -1,
+  "expand_doc_topk": 1,
+  "min_p": 0.0,
+  "improved_nce": false,
+  "fn_threshold": 0.1,
+  "max_balance_mode": false,
+  "online_cot_bs": 64,
+  "distributed_index": false,
+  "index_gather_gloo": false,
+  "split_thres": 100,
+  "nce_margin": 0,
+  "swav_weight": 0.0,
+  "internal_swav_weight": 0.0,
+  "single_node_dup": 1,
+  "binary_leaf_loss": false,
+  "no_internal_cl": false,
+  "cot_weight": 1,
+  "qa_cot_weight": 1,
+  "leaf_cot_weight": -1,
+  "inc_cotw": false,
+  "query_mode": "cot",
+  "attn_mask_4d": false,
+  "teacher_assign_mode": false,
+  "last_world_size": 8,
+  "lr_decay_ratio": 1.0,
+  "lr_cosine_decay_epochs": 10,
+  "lr_min": 1e-06,
+  "topk_leaf_node": 16,
+  "leaf_expand_mode": "doc",
+  "neg_query_ratio": 0.25,
+  "vl_orig_tokens": 36,
+  "vl_crop_tokens": 144,
+  "vl_resize_raw": false,
+  "random_img_ratio": -1,
+  "doc_centric": true,
+  "unfreeze_vit": false,
+  "enable_deepstack_image": false,
+  "ignore_pair_thres": 1,
+  "kgcate_margin": 0.0,
+  "leaf_cl_margin": 0.0,
+  "hard_swav_label": false,
+  "stable_tree_bs": 16,
+  "auxio": false,
+  "enable_graph_sinkhorn": false,
+  "doc_sinkhorn_mode": false,
+  "leaf_project_dim": 0,
+  "sample_leaf_negative": true,
+  "qa_mode": false,
+  "train_sft_filename": null,
+  "dev_sft_filename": null,
+  "qa_sft_batch_size": 8,
+  "qa_sft_max_length": 1280,
+  "attn_impl": "auto",
+  "node_rank": 0,
+  "node_size": 8,
+  "split_group_world_size": 4,
+  "split_group_id": 0,
+  "cot_prompt": "<|im_start|>user\nuser ask \"%s\" in web search, what topic he want to know? reply in several sentences.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+}
+[INFO] num_token_added:4 vl_mode=False
+[INFO] Using attn_implementation=flash_attention_2
+[INFO] split_group=0/2 ranks=[0, 1, 2, 3]
+[INF] load corpus size=13718 docs_with_query_cnt=13718 from /data/oss_bucket_0/kesi/genret/dataset/nq320k/train.qg.full.jsonl vl_mode=False
+[INF] load corpus size=7832 from /data/oss_bucket_0/kesi/genret/dataset/nq320k/dev.jsonl vl_mode=False query_side=False
+[INFO] start training epoch=0 sampler info=rank=0/8, node_list=len:1/[()], doc_size=[13718], pos_queries=0 multi_node_query_pool_size=175641
+[INFO] shuffle rank=0 seed=0_0 node_list=[()]
+[training info] epoch=0 step=0/108 metrcis=cnt=1
+total_loss=8.67
+cot_loss=1.63
+sn_ratio=1.00
+level0/swav_loss=0.00
+level0/acc=0.98
+level0/balance_ratio=126.00
+level0/contrastive_loss=7.04
+lr=9.259e-07
+[training info] epoch=0 step=10/108 metrcis=cnt=11
+total_loss=7.88
+cot_loss=1.13
+sn_ratio=1.00
+level0/swav_loss=0.00
+level0/acc=0.95
+level0/balance_ratio=124.00
+level0/contrastive_loss=6.75
+lr=1.019e-05
+[training info] epoch=0 step=50/108 metrcis=cnt=51
+total_loss=3.18
+cot_loss=0.80
+sn_ratio=1.00
+level0/swav_loss=0.00
+level0/acc=0.69
+level0/balance_ratio=38.31
+level0/contrastive_loss=2.38
+lr=4.722e-05
+[training info] epoch=0 step=100/108 metrcis=cnt=101
+total_loss=2.24
+cot_loss=0.74
+sn_ratio=1.00
+level0/swav_loss=0.00
+level0/acc=0.68
+level0/balance_ratio=20.89
+level0/contrastive_loss=1.50
+lr=9.352e-05
+[training info] epoch=0 step=107/108 metrcis=cnt=108
+total_loss=2.18
+cot_loss=0.74
+sn_ratio=1.00
+level0/swav_loss=0.00
+level0/acc=0.67
+level0/balance_ratio=19.77
+level0/contrastive_loss=1.44
+lr=1.000e-04
+balance_ratio=3.20
+[BARRIER-PROBE][epoch0_train_end] rank=0 wait=0.07s ok
+[BARRIER-PROBE][epoch0_after_save] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch0_before_doc_balance] rank=0 wait=0.00s ok
+[INF] load corpus size=109739 from /data/oss_bucket_0/kesi/genret/dataset/nq320k/corpus_lite.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-09-08 14:22:28.079185
+[INF] end of merge index_map, 2026-09-08 14:22:28.155239
+[build_index] done: 10 leaf nodes (this rank), 10240 total doc-node entries, 10240 unique docs min/max docs: 575/1498
+[BARRIER-PROBE][epoch0_after_doc_balance] rank=0 wait=0.07s ok
+[INFO] eval DEV at epoch=0 NodeBalance=level0 doc_balance=2.61(max=1498/min=575/nodes=10)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+result=###################################################################
+****wocot:depth1/hit@1=0.662
+****wocot:depth1/hit@8=0.949
+****wocot:depth1/hit@16=0.949
+****wocot:depth1/hit@32=0.949
+****gtcot:depth1/hit@1=0.669
+****gtcot:depth1/hit@8=0.951
+****gtcot:depth1/hit@16=0.951
+****gtcot:depth1/hit@32=0.951
+[INFO] increase active_depth from 0 to 1 acc_q=0.67/0.50 balance_ratio=3.20/10000.00
+[INFO] start training epoch=1 sampler info=rank=0/8, node_list=len:10/[(0,), (1,), (2,), (3,), (4,), (5,), (6,), (7,), (8,), (9,)], doc_size=[1182, 1241, 3068, 1134, 1455, 981, 1094, 1227, 1073, 1263], pos_queries=0 multi_node_query_pool_size=175641
+[INFO] shuffle rank=0 seed=1_0 node_list=[(0,), (2,), (8,), (5,), (1,), (4,), (7,), (3,), (6,), (9,)]
+[training info] epoch=1 step=0/290 metrcis=cnt=1
+total_loss=1.87
+cot_loss=0.62
+sn_ratio=0.75
+level0/swav_loss=0.00
+level0/acc_q=0.34
+level0/acc_d=0.52
+level1/swav_loss=0.00
+level1/acc=0.68
+level1/balance_ratio=27.00
+level1/contrastive_loss=1.25
+lr=1.000e-04
+[training info] epoch=1 step=10/290 metrcis=cnt=11
+total_loss=1.45
+cot_loss=0.64
+sn_ratio=0.75
+level0/swav_loss=0.00
+level0/acc_q=0.46
+level0/acc_d=0.57
+level1/swav_loss=0.00
+level1/acc=0.65
+level1/balance_ratio=13.31
+level1/contrastive_loss=0.81
+lr=1.000e-04
+[training info] epoch=1 step=50/290 metrcis=cnt=51
+total_loss=1.17
+cot_loss=0.62
+sn_ratio=0.75
+level0/swav_loss=0.00
+level0/acc_q=0.48
+level0/acc_d=0.57
+level1/swav_loss=0.00
+level1/acc=0.66
+level1/balance_ratio=6.77
+level1/contrastive_loss=0.54
+lr=1.000e-04
+[training info] epoch=1 step=100/290 metrcis=cnt=101
+total_loss=1.14
+cot_loss=0.63
+sn_ratio=0.75
+level0/swav_loss=0.00
+level0/acc_q=0.46
+level0/acc_d=0.55
+level1/swav_loss=0.00
+level1/acc=0.67
+level1/balance_ratio=5.11
+level1/contrastive_loss=0.52
+lr=1.000e-04
+[training info] epoch=1 step=289/290 metrcis=cnt=290
+total_loss=1.20
+cot_loss=0.66
+sn_ratio=0.75
+level0/swav_loss=0.00
+level0/acc_q=0.41
+level0/acc_d=0.48
+level1/swav_loss=0.00
+level1/acc=0.66
+level1/balance_ratio=4.46
+level1/contrastive_loss=0.54
+lr=1.000e-04
+balance_ratio=9.68
+[BARRIER-PROBE][epoch1_train_end] rank=0 wait=0.01s ok
+[BARRIER-PROBE][epoch1_after_save] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch1_before_doc_balance] rank=0 wait=0.01s ok
+[INF] load corpus size=109739 from /data/oss_bucket_0/kesi/genret/dataset/nq320k/corpus_lite.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-09-08 14:42:50.136782
+[INF] end of merge index_map, 2026-09-08 14:42:50.532692
+[build_index] done: 100 leaf nodes (this rank), 10240 total doc-node entries, 10240 unique docs min/max docs: 17/273
+[BARRIER-PROBE][epoch1_after_doc_balance] rank=0 wait=0.00s ok
+[INFO] eval DEV at epoch=1 NodeBalance=level0 doc_balance=4.37(max=1448/min=331/nodes=10)
+level1 doc_balance=16.06(max=273/min=17/nodes=100)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:4.0/4.0/4.0
+result=###################################################################
+****wocot:depth1/hit@1=0.623
+****wocot:depth1/hit@8=0.930
+****wocot:depth1/hit@16=0.930
+****wocot:depth1/hit@32=0.930
+****wocot:depth2/hit@1=0.366
+****wocot:depth2/hit@8=0.828
+****wocot:depth2/hit@16=0.898
+****wocot:depth2/hit@32=0.927
+****gtcot:depth1/hit@1=0.632
+****gtcot:depth1/hit@8=0.934
+****gtcot:depth1/hit@16=0.934
+****gtcot:depth1/hit@32=0.934
+****gtcot:depth2/hit@1=0.373
+****gtcot:depth2/hit@8=0.843
+****gtcot:depth2/hit@16=0.904
+****gtcot:depth2/hit@32=0.931
+[INFO] increase active_depth from 1 to 2 acc_q=0.66/0.49 balance_ratio=9.68/10000.00
+[INFO] multi_node_query_pool append (0, 0, (9, 0))
+[INFO] multi_node_query_pool append (0, 0, (6, 0))
+[INFO] multi_node_query_pool append (0, 0, (0, 0))
+[INFO] multi_node_query_pool append (0, 0, (8, 0))
+[INFO] multi_node_query_pool append (1024, 0, (4, 0))
+[INFO] multi_node_query_pool append (1024, 0, (2, 0))
+[INFO] multi_node_query_pool append (1024, 0, (9, 0))
+[INFO] multi_node_query_pool append (1024, 0, (5, 0))
+[INFO] multi_node_query_pool append (2048, 0, (4, 0))
+[INFO] multi_node_query_pool append (2048, 0, (9, 0))
+[INFO] multi_node_query_pool append (2048, 0, (6, 0))
+[INFO] multi_node_query_pool append (2048, 0, (5, 0))
+[INFO] multi_node_query_pool append (3072, 0, (0, 0))
+[INFO] multi_node_query_pool append (3072, 0, (5, 0))
+[INFO] multi_node_query_pool append (3072, 0, (9, 0))
+[INFO] multi_node_query_pool append (3072, 0, (1, 0))
+[INFO] multi_node_query_pool append (4096, 0, (8, 0))
+[INFO] multi_node_query_pool append (4096, 0, (0, 0))
+[INFO] multi_node_query_pool append (4096, 0, (7, 0))
+[INFO] multi_node_query_pool append (4096, 0, (6, 0))
+[INFO] multi_node_query_pool append (5120, 0, (4, 0))
+[INFO] multi_node_query_pool append (5120, 0, (5, 0))
+[INFO] multi_node_query_pool append (5120, 0, (8, 0))
+[INFO] multi_node_query_pool append (5120, 0, (9, 0))
+[INFO] multi_node_query_pool append (6144, 0, (4, 0))
+[INFO] multi_node_query_pool append (6144, 0, (5, 0))
+[INFO] multi_node_query_pool append (6144, 0, (7, 0))
+[INFO] multi_node_query_pool append (6144, 0, (9, 0))
+[INFO] multi_node_query_pool append (7168, 0, (5, 0))
+[INFO] multi_node_query_pool append (7168, 0, (7, 0))
+[INFO] multi_node_query_pool append (7168, 0, (8, 0))
+[INFO] multi_node_query_pool append (7168, 0, (9, 0))
+[INFO] multi_node_query_pool append (8192, 0, (6, 0))
+[INFO] multi_node_query_pool append (8192, 0, (9, 0))
+[INFO] multi_node_query_pool append (8192, 0, (7, 0))
+[INFO] multi_node_query_pool append (8192, 0, (2, 0))
+[INFO] multi_node_query_pool append (9216, 0, (7, 0))
+[INFO] multi_node_query_pool append (9216, 0, (4, 0))
+[INFO] multi_node_query_pool append (9216, 0, (5, 0))
+[INFO] multi_node_query_pool append (9216, 0, (2, 0))
+[2026-09-08 14:53:33,616] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[INFO] multi_node_query_pool append (10240, 0, (9, 0))
+[INFO] multi_node_query_pool append (10240, 0, (2, 0))
+[INFO] multi_node_query_pool append (10240, 0, (4, 0))
+[INFO] multi_node_query_pool append (10240, 0, (6, 0))
+[INFO] multi_node_query_pool append (11264, 0, (5, 0))
+[INFO] multi_node_query_pool append (11264, 0, (7, 0))
+[INFO] multi_node_query_pool append (11264, 0, (1, 0))
+[INFO] multi_node_query_pool append (11264, 0, (2, 0))
+[INFO] multi_node_query_pool append (12288, 0, (9, 0))
+[INFO] multi_node_query_pool append (12288, 0, (8, 0))
+[INFO] multi_node_query_pool append (12288, 0, (1, 0))
+[INFO] multi_node_query_pool append (12288, 0, (4, 0))
+[INFO] multi_node_query_pool append (13312, 0, (2, 0))
+[INFO] multi_node_query_pool append (13312, 0, (3, 0))
+[INFO] multi_node_query_pool append (13312, 0, (9, 0))
+[INFO] multi_node_query_pool append (13312, 0, (8, 0))
+[INFO] multi_node_query_pool append (14336, 0, (2, 0))
+[INFO] multi_node_query_pool append (14336, 0, (3, 0))
+[INFO] multi_node_query_pool append (14336, 0, (4, 0))
+[INFO] multi_node_query_pool append (14336, 0, (1, 0))
+[INFO] multi_node_query_pool append (15360, 0, (9, 0))
+[INFO] multi_node_query_pool append (15360, 0, (1, 0))
+[INFO] multi_node_query_pool append (15360, 0, (3, 0))
+[INFO] multi_node_query_pool append (15360, 0, (7, 0))
+[INFO] multi_node_query_pool append (16384, 0, (0, 0))
+[INFO] multi_node_query_pool append (16384, 0, (8, 0))
+[INFO] multi_node_query_pool append (16384, 0, (6, 0))
+[INFO] multi_node_query_pool append (16384, 0, (1, 0))
+[INFO] multi_node_query_pool append (17408, 0, (2, 0))
+[INFO] multi_node_query_pool append (17408, 0, (3, 0))
+[INFO] multi_node_query_pool append (17408, 0, (0, 0))
+[INFO] multi_node_query_pool append (17408, 0, (5, 0))
+[INFO] multi_node_query_pool append (18432, 0, (7, 0))
+[INFO] multi_node_query_pool append (18432, 0, (6, 0))
+[INFO] multi_node_query_pool append (18432, 0, (2, 0))
+[INFO] multi_node_query_pool append (18432, 0, (9, 0))
+[INFO] multi_node_query_pool append (19456, 0, (1, 0))
+[INFO] multi_node_query_pool append (19456, 0, (6, 0))
+[INFO] multi_node_query_pool append (19456, 0, (0, 0))
+[INFO] multi_node_query_pool append (19456, 0, (4, 0))
+[INFO] multi_node_query_pool append (20480, 0, (8, 0))
+[INFO] multi_node_query_pool append (20480, 0, (7, 0))
+[INFO] multi_node_query_pool append (20480, 0, (4, 0))
+[INFO] multi_node_query_pool append (20480, 0, (1, 0))
+[INFO] multi_node_query_pool append (21504, 0, (2, 0))
+[INFO] multi_node_query_pool append (21504, 0, (6, 0))
+[INFO] multi_node_query_pool append (21504, 0, (5, 0))
+[INFO] multi_node_query_pool append (21504, 0, (7, 0))
+[INFO] multi_node_query_pool append (22528, 0, (6, 0))
+[INFO] multi_node_query_pool append (22528, 0, (4, 0))
+[INFO] multi_node_query_pool append (22528, 0, (8, 0))
+[INFO] multi_node_query_pool append (22528, 0, (0, 0))
+[INFO] multi_node_query_pool append (23552, 0, (2, 0))
+[INFO] multi_node_query_pool append (23552, 0, (6, 0))
+[INFO] multi_node_query_pool append (23552, 0, (5, 0))
+[INFO] multi_node_query_pool append (23552, 0, (4, 0))
+[INFO] multi_node_query_pool append (24576, 0, (4, 0))
+[INFO] multi_node_query_pool append (24576, 0, (9, 0))
+[INFO] multi_node_query_pool append (24576, 0, (3, 0))
+[INFO] multi_node_query_pool append (24576, 0, (5, 0))
+[INFO] multi_node_query_pool append (25600, 0, (1, 0))
+[INFO] multi_node_query_pool append (25600, 0, (0, 0))
+[INFO] multi_node_query_pool append (25600, 0, (8, 0))
+[INFO] multi_node_query_pool append (25600, 0, (7, 0))
+[INFO] multi_node_query_pool append (26624, 0, (6, 0))
+[INFO] multi_node_query_pool append (26624, 0, (9, 0))
+[INFO] multi_node_query_pool append (26624, 0, (0, 0))
+[INFO] multi_node_query_pool append (26624, 0, (8, 0))
+[INFO] multi_node_query_pool append (27648, 0, (1, 0))
+[INFO] multi_node_query_pool append (27648, 0, (6, 0))
+[INFO] multi_node_query_pool append (27648, 0, (9, 0))
+[INFO] multi_node_query_pool append (27648, 0, (2, 0))
+[INFO] multi_node_query_pool append (28672, 0, (0, 0))
+[INFO] multi_node_query_pool append (28672, 0, (6, 0))
+[INFO] multi_node_query_pool append (28672, 0, (1, 0))
+[INFO] multi_node_query_pool append (28672, 0, (9, 0))
+[INFO] multi_node_query_pool append (29696, 0, (0, 0))
+[INFO] multi_node_query_pool append (29696, 0, (4, 0))
+[INFO] multi_node_query_pool append (29696, 0, (3, 0))
+[INFO] multi_node_query_pool append (29696, 0, (5, 0))
+[INFO] multi_node_query_pool append (30720, 0, (7, 0))
+[INFO] multi_node_query_pool append (30720, 0, (6, 0))
+[INFO] multi_node_query_pool append (30720, 0, (4, 0))
+[INFO] multi_node_query_pool append (30720, 0, (1, 0))
+[INFO] multi_node_query_pool append (31744, 0, (4, 0))
+[INFO] multi_node_query_pool append (31744, 0, (9, 0))
+[INFO] multi_node_query_pool append (31744, 0, (2, 0))
+[INFO] multi_node_query_pool append (31744, 0, (5, 0))
+[INFO] multi_node_query_pool append (32768, 0, (2, 0))
+[INFO] multi_node_query_pool append (32768, 0, (5, 0))
+[INFO] multi_node_query_pool append (32768, 0, (8, 0))
+[INFO] multi_node_query_pool append (32768, 0, (3, 0))
+[INFO] multi_node_query_pool append (33792, 0, (2, 0))
+[INFO] multi_node_query_pool append (33792, 0, (5, 0))
+[INFO] multi_node_query_pool append (33792, 0, (8, 0))
+[INFO] multi_node_query_pool append (33792, 0, (4, 0))
+[INFO] multi_node_query_pool append (34816, 0, (1, 0))
+[INFO] multi_node_query_pool append (34816, 0, (9, 0))
+[INFO] multi_node_query_pool append (34816, 0, (2, 0))
+[INFO] multi_node_query_pool append (34816, 0, (4, 0))
+[INFO] multi_node_query_pool append (35840, 0, (8, 0))
+[INFO] multi_node_query_pool append (35840, 0, (5, 0))
+[INFO] multi_node_query_pool append (35840, 0, (9, 0))
+[INFO] multi_node_query_pool append (35840, 0, (4, 0))
+[INFO] multi_node_query_pool append (36864, 0, (7, 0))
+[INFO] multi_node_query_pool append (36864, 0, (9, 0))
+[INFO] multi_node_query_pool append (36864, 0, (6, 0))
+[INFO] multi_node_query_pool append (36864, 0, (5, 0))
+[INFO] multi_node_query_pool append (37888, 0, (9, 0))
+[INFO] multi_node_query_pool append (37888, 0, (5, 0))
+[INFO] multi_node_query_pool append (37888, 0, (4, 0))
+[INFO] multi_node_query_pool append (37888, 0, (7, 0))
+[INFO] multi_node_query_pool append (38912, 0, (9, 0))
+[INFO] multi_node_query_pool append (38912, 0, (1, 0))
+[INFO] multi_node_query_pool append (38912, 0, (0, 0))
+[INFO] multi_node_query_pool append (38912, 0, (4, 0))
+[INFO] multi_node_query_pool append (39936, 0, (1, 0))
+[INFO] multi_node_query_pool append (39936, 0, (2, 0))
+[INFO] multi_node_query_pool append (39936, 0, (7, 0))
+[INFO] multi_node_query_pool append (39936, 0, (4, 0))
+[INFO] multi_node_query_pool append (40960, 0, (6, 0))
+[INFO] multi_node_query_pool append (40960, 0, (4, 0))
+[INFO] multi_node_query_pool append (40960, 0, (0, 0))
+[INFO] multi_node_query_pool append (40960, 0, (3, 0))
+[INFO] multi_node_query_pool append (41984, 0, (8, 0))
+[INFO] multi_node_query_pool append (41984, 0, (3, 0))
+[INFO] multi_node_query_pool append (41984, 0, (0, 0))
+[INFO] multi_node_query_pool append (41984, 0, (1, 0))
+[INFO] multi_node_query_pool append (43008, 0, (6, 0))
+[INFO] multi_node_query_pool append (43008, 0, (7, 0))
+[INFO] multi_node_query_pool append (43008, 0, (5, 0))
+[INFO] multi_node_query_pool append (43008, 0, (1, 0))
+[INFO] multi_node_query_pool append (44032, 0, (0, 0))
+[INFO] multi_node_query_pool append (44032, 0, (5, 0))
+[INFO] multi_node_query_pool append (44032, 0, (4, 0))
+[INFO] multi_node_query_pool append (44032, 0, (6, 0))
+[INFO] multi_node_query_pool append (45056, 0, (0, 0))
+[INFO] multi_node_query_pool append (45056, 0, (4, 0))
+[INFO] multi_node_query_pool append (45056, 0, (5, 0))
+[INFO] multi_node_query_pool append (45056, 0, (8, 0))
+[INFO] multi_node_query_pool append (46080, 0, (2, 0))
+[INFO] multi_node_query_pool append (46080, 0, (9, 0))
+[INFO] multi_node_query_pool append (46080, 0, (8, 0))
+[INFO] multi_node_query_pool append (46080, 0, (4, 0))
+[INFO] multi_node_query_pool append (47104, 0, (4, 0))
+[INFO] multi_node_query_pool append (47104, 0, (9, 0))
+[INFO] multi_node_query_pool append (47104, 0, (8, 0))
+[INFO] multi_node_query_pool append (47104, 0, (2, 0))
+[INFO] multi_node_query_pool append (48128, 0, (0, 0))
+[INFO] multi_node_query_pool append (48128, 0, (4, 0))
+[INFO] multi_node_query_pool append (48128, 0, (1, 0))
+[INFO] multi_node_query_pool append (48128, 0, (5, 0))
+[INFO] multi_node_query_pool append (49152, 0, (5, 0))
+[INFO] multi_node_query_pool append (49152, 0, (1, 0))
+[INFO] multi_node_query_pool append (49152, 0, (4, 0))
+[INFO] multi_node_query_pool append (49152, 0, (0, 0))
+[INFO] multi_node_query_pool append (50176, 0, (1, 0))
+[INFO] multi_node_query_pool append (50176, 0, (4, 0))
+[INFO] multi_node_query_pool append (50176, 0, (0, 0))
+[INFO] multi_node_query_pool append (50176, 0, (6, 0))
+[INFO] multi_node_query_pool append (51200, 0, (3, 0))
+[INFO] multi_node_query_pool append (51200, 0, (9, 0))
+[INFO] multi_node_query_pool append (51200, 0, (0, 0))
+[INFO] multi_node_query_pool append (51200, 0, (6, 0))
+[INFO] multi_node_query_pool append (52224, 0, (7, 0))
+[INFO] multi_node_query_pool append (52224, 0, (1, 0))
+[INFO] multi_node_query_pool append (52224, 0, (4, 0))
+[INFO] multi_node_query_pool append (52224, 0, (3, 0))
+[INFO] multi_node_query_pool append (53248, 0, (4, 0))
+[INFO] multi_node_query_pool append (53248, 0, (3, 0))
+[INFO] multi_node_query_pool append (53248, 0, (5, 0))
+[INFO] multi_node_query_pool append (53248, 0, (9, 0))
+[INFO] multi_node_query_pool append (54272, 0, (9, 0))
+[INFO] multi_node_query_pool append (54272, 0, (8, 0))
+[INFO] multi_node_query_pool append (54272, 0, (4, 0))
+[INFO] multi_node_query_pool append (54272, 0, (5, 0))
+[INFO] multi_node_query_pool append (55296, 0, (8, 0))
+[INFO] multi_node_query_pool append (55296, 0, (0, 0))
+[INFO] multi_node_query_pool append (55296, 0, (5, 0))
+[INFO] multi_node_query_pool append (55296, 0, (7, 0))
+[INFO] multi_node_query_pool append (56320, 0, (5, 0))
+[INFO] multi_node_query_pool append (56320, 0, (6, 0))
+[INFO] multi_node_query_pool append (56320, 0, (0, 0))
+[INFO] multi_node_query_pool append (56320, 0, (8, 0))
+[INFO] multi_node_query_pool append (57344, 0, (2, 0))
+[INFO] multi_node_query_pool append (57344, 0, (8, 0))
+[INFO] multi_node_query_pool append (57344, 0, (6, 0))
+[INFO] multi_node_query_pool append (57344, 0, (0, 0))
+[INFO] multi_node_query_pool append (58368, 0, (2, 0))
+[INFO] multi_node_query_pool append (58368, 0, (6, 0))
+[INFO] multi_node_query_pool append (58368, 0, (4, 0))
+[INFO] multi_node_query_pool append (58368, 0, (7, 0))
+[INFO] multi_node_query_pool append (59392, 0, (8, 0))
+[INFO] multi_node_query_pool append (59392, 0, (6, 0))
+[INFO] multi_node_query_pool append (59392, 0, (1, 0))
+[INFO] multi_node_query_pool append (59392, 0, (2, 0))
+[INFO] multi_node_query_pool append (60416, 0, (8, 0))
+[INFO] multi_node_query_pool append (60416, 0, (4, 0))
+[INFO] multi_node_query_pool append (60416, 0, (9, 0))
+[INFO] multi_node_query_pool append (60416, 0, (3, 0))
+[INFO] multi_node_query_pool append (61440, 0, (0, 0))
+[INFO] multi_node_query_pool append (61440, 0, (3, 0))
+[INFO] multi_node_query_pool append (61440, 0, (5, 0))
+[INFO] multi_node_query_pool append (61440, 0, (7, 0))
+[INFO] multi_node_query_pool append (62464, 0, (1, 0))
+[INFO] multi_node_query_pool append (62464, 0, (5, 0))
+[INFO] multi_node_query_pool append (62464, 0, (0, 0))
+[INFO] multi_node_query_pool append (62464, 0, (3, 0))
+[INFO] multi_node_query_pool append (63488, 0, (0, 0))
+[INFO] multi_node_query_pool append (63488, 0, (5, 0))
+[INFO] multi_node_query_pool append (63488, 0, (8, 0))
+[INFO] multi_node_query_pool append (63488, 0, (6, 0))
+[INFO] multi_node_query_pool append (64512, 0, (0, 0))
+[INFO] multi_node_query_pool append (64512, 0, (7, 0))
+[INFO] multi_node_query_pool append (64512, 0, (8, 0))
+[INFO] multi_node_query_pool append (64512, 0, (5, 0))
+[INFO] multi_node_query_pool append (65536, 0, (5, 0))
+[INFO] multi_node_query_pool append (65536, 0, (4, 0))
+[INFO] multi_node_query_pool append (65536, 0, (8, 0))
+[INFO] multi_node_query_pool append (65536, 0, (2, 0))
+[INFO] multi_node_query_pool append (66560, 0, (7, 0))
+[INFO] multi_node_query_pool append (66560, 0, (9, 0))
+[INFO] multi_node_query_pool append (66560, 0, (5, 0))
+[INFO] multi_node_query_pool append (66560, 0, (6, 0))
+[INFO] multi_node_query_pool append (67584, 0, (0, 0))
+[INFO] multi_node_query_pool append (67584, 0, (1, 0))
+[INFO] multi_node_query_pool append (67584, 0, (9, 0))
+[INFO] multi_node_query_pool append (67584, 0, (5, 0))
+[INFO] multi_node_query_pool append (68608, 0, (6, 0))
+[INFO] multi_node_query_pool append (68608, 0, (5, 0))
+[INFO] multi_node_query_pool append (68608, 0, (2, 0))
+[INFO] multi_node_query_pool append (68608, 0, (0, 0))
+[INFO] multi_node_query_pool append (69632, 0, (2, 0))
+[INFO] multi_node_query_pool append (69632, 0, (8, 0))
+[INFO] multi_node_query_pool append (69632, 0, (5, 0))
+[INFO] multi_node_query_pool append (69632, 0, (4, 0))
+[INFO] multi_node_query_pool append (70656, 0, (5, 0))
+[INFO] multi_node_query_pool append (70656, 0, (4, 0))
+[INFO] multi_node_query_pool append (70656, 0, (6, 0))
+[INFO] multi_node_query_pool append (70656, 0, (0, 0))
+[INFO] multi_node_query_pool append (71680, 0, (2, 0))
+[INFO] multi_node_query_pool append (71680, 0, (1, 0))
+[INFO] multi_node_query_pool append (71680, 0, (3, 0))
+[INFO] multi_node_query_pool append (71680, 0, (9, 0))
+[INFO] multi_node_query_pool append (72704, 0, (8, 0))
+[INFO] multi_node_query_pool append (72704, 0, (5, 0))
+[INFO] multi_node_query_pool append (72704, 0, (2, 0))
+[INFO] multi_node_query_pool append (72704, 0, (6, 0))
+[INFO] multi_node_query_pool append (73728, 0, (4, 0))
+[INFO] multi_node_query_pool append (73728, 0, (2, 0))
+[INFO] multi_node_query_pool append (73728, 0, (6, 0))
+[INFO] multi_node_query_pool append (73728, 0, (9, 0))
+[INFO] multi_node_query_pool append (74752, 0, (9, 0))
+[INFO] multi_node_query_pool append (74752, 0, (5, 0))
+[INFO] multi_node_query_pool append (74752, 0, (1, 0))
+[INFO] multi_node_query_pool append (74752, 0, (2, 0))
+[INFO] multi_node_query_pool append (75776, 0, (4, 0))
+[INFO] multi_node_query_pool append (75776, 0, (6, 0))
+[INFO] multi_node_query_pool append (75776, 0, (5, 0))
+[INFO] multi_node_query_pool append (75776, 0, (7, 0))
+[INFO] multi_node_query_pool append (76800, 0, (9, 0))
+[INFO] multi_node_query_pool append (76800, 0, (7, 0))
+[INFO] multi_node_query_pool append (76800, 0, (5, 0))
+[INFO] multi_node_query_pool append (76800, 0, (2, 0))
+[INFO] multi_node_query_pool append (77824, 0, (6, 0))
+[INFO] multi_node_query_pool append (77824, 0, (5, 0))
+[INFO] multi_node_query_pool append (77824, 0, (0, 0))
+[INFO] multi_node_query_pool append (77824, 0, (8, 0))
+[INFO] multi_node_query_pool append (78848, 0, (8, 0))
+[INFO] multi_node_query_pool append (78848, 0, (0, 0))
+[INFO] multi_node_query_pool append (78848, 0, (6, 0))
+[INFO] multi_node_query_pool append (78848, 0, (4, 0))
+[INFO] multi_node_query_pool append (79872, 0, (4, 0))
+[INFO] multi_node_query_pool append (79872, 0, (8, 0))
+[INFO] multi_node_query_pool append (79872, 0, (1, 0))
+[INFO] multi_node_query_pool append (79872, 0, (9, 0))
+[INFO] multi_node_query_pool append (80896, 0, (7, 0))
+[INFO] multi_node_query_pool append (80896, 0, (5, 0))
+[INFO] multi_node_query_pool append (80896, 0, (2, 0))
+[INFO] multi_node_query_pool append (80896, 0, (3, 0))
+[INFO] multi_node_query_pool append (81920, 0, (7, 0))
+[INFO] multi_node_query_pool append (81920, 0, (6, 0))
+[INFO] multi_node_query_pool append (81920, 0, (2, 0))
+[INFO] multi_node_query_pool append (81920, 0, (0, 0))
+[INFO] multi_node_query_pool append (82944, 0, (2, 0))
+[INFO] multi_node_query_pool append (82944, 0, (4, 0))
+[INFO] multi_node_query_pool append (82944, 0, (8, 0))
+[INFO] multi_node_query_pool append (82944, 0, (6, 0))
+[INFO] multi_node_query_pool append (83968, 0, (1, 0))
+[INFO] multi_node_query_pool append (83968, 0, (4, 0))
+[INFO] multi_node_query_pool append (83968, 0, (5, 0))
+[INFO] multi_node_query_pool append (83968, 0, (6, 0))
+[INFO] multi_node_query_pool append (84992, 0, (6, 0))
+[INFO] multi_node_query_pool append (84992, 0, (1, 0))
+[INFO] multi_node_query_pool append (84992, 0, (4, 0))
+[INFO] multi_node_query_pool append (84992, 0, (3, 0))
+[INFO] multi_node_query_pool append (86016, 0, (5, 0))
+[INFO] multi_node_query_pool append (86016, 0, (9, 0))
+[INFO] multi_node_query_pool append (86016, 0, (7, 0))
+[INFO] multi_node_query_pool append (86016, 0, (3, 0))
+[INFO] multi_node_query_pool append (87040, 0, (4, 0))
+[INFO] multi_node_query_pool append (87040, 0, (2, 0))
+[INFO] multi_node_query_pool append (87040, 0, (3, 0))
+[INFO] multi_node_query_pool append (87040, 0, (9, 0))
+[INFO] multi_node_query_pool append (88064, 0, (5, 0))
+[INFO] multi_node_query_pool append (88064, 0, (1, 0))
+[INFO] multi_node_query_pool append (88064, 0, (8, 0))
+[INFO] multi_node_query_pool append (88064, 0, (4, 0))
+[INFO] multi_node_query_pool append (89088, 0, (5, 0))
+[INFO] multi_node_query_pool append (89088, 0, (1, 0))
+[INFO] multi_node_query_pool append (89088, 0, (6, 0))
+[INFO] multi_node_query_pool append (89088, 0, (0, 0))
+[INFO] multi_node_query_pool append (90112, 0, (2, 0))
+[INFO] multi_node_query_pool append (90112, 0, (1, 0))
+[INFO] multi_node_query_pool append (90112, 0, (6, 0))
+[INFO] multi_node_query_pool append (90112, 0, (7, 0))
+[INFO] multi_node_query_pool append (91136, 0, (4, 0))
+[INFO] multi_node_query_pool append (91136, 0, (5, 0))
+[INFO] multi_node_query_pool append (91136, 0, (9, 0))
+[INFO] multi_node_query_pool append (91136, 0, (8, 0))
+[INFO] multi_node_query_pool append (92160, 0, (4, 0))
+[INFO] multi_node_query_pool append (92160, 0, (6, 0))
+[INFO] multi_node_query_pool append (92160, 0, (5, 0))
+[INFO] multi_node_query_pool append (92160, 0, (1, 0))
+[INFO] multi_node_query_pool append (93184, 0, (0, 0))
+[INFO] multi_node_query_pool append (93184, 0, (3, 0))
+[INFO] multi_node_query_pool append (93184, 0, (8, 0))
+[INFO] multi_node_query_pool append (93184, 0, (6, 0))
+[INFO] multi_node_query_pool append (94208, 0, (1, 0))
+[INFO] multi_node_query_pool append (94208, 0, (7, 0))
+[INFO] multi_node_query_pool append (94208, 0, (0, 0))
+[INFO] multi_node_query_pool append (94208, 0, (8, 0))
+[INFO] multi_node_query_pool append (95232, 0, (8, 0))
+[INFO] multi_node_query_pool append (95232, 0, (7, 0))
+[INFO] multi_node_query_pool append (95232, 0, (9, 0))
+[INFO] multi_node_query_pool append (95232, 0, (5, 0))
+[INFO] multi_node_query_pool append (96256, 0, (0, 0))
+[INFO] multi_node_query_pool append (96256, 0, (6, 0))
+[INFO] multi_node_query_pool append (96256, 0, (8, 0))
+[INFO] multi_node_query_pool append (96256, 0, (3, 0))
+[INFO] multi_node_query_pool append (97280, 0, (7, 0))
+[INFO] multi_node_query_pool append (97280, 0, (4, 0))
+[INFO] multi_node_query_pool append (97280, 0, (1, 0))
+[INFO] multi_node_query_pool append (97280, 0, (8, 0))
+[INFO] multi_node_query_pool append (98304, 0, (0, 0))
+[INFO] multi_node_query_pool append (98304, 0, (7, 0))
+[INFO] multi_node_query_pool append (98304, 0, (8, 0))
+[INFO] multi_node_query_pool append (98304, 0, (5, 0))
+[INFO] multi_node_query_pool append (99328, 0, (6, 0))
+[INFO] multi_node_query_pool append (99328, 0, (8, 0))
+[INFO] multi_node_query_pool append (99328, 0, (0, 0))
+[INFO] multi_node_query_pool append (99328, 0, (2, 0))
+[INFO] multi_node_query_pool append (100352, 0, (1, 0))
+[INFO] multi_node_query_pool append (100352, 0, (5, 0))
+[INFO] multi_node_query_pool append (100352, 0, (2, 0))
+[INFO] multi_node_query_pool append (100352, 0, (7, 0))
+[INFO] multi_node_query_pool append (101376, 0, (5, 0))
+[INFO] multi_node_query_pool append (101376, 0, (4, 0))
+[INFO] multi_node_query_pool append (101376, 0, (9, 0))
+[INFO] multi_node_query_pool append (101376, 0, (3, 0))
+[INFO] multi_node_query_pool append (102400, 0, (2, 0))
+[INFO] multi_node_query_pool append (102400, 0, (3, 0))
+[INFO] multi_node_query_pool append (102400, 0, (4, 0))
+[INFO] multi_node_query_pool append (102400, 0, (5, 0))
+[INFO] multi_node_query_pool append (103424, 0, (5, 0))
+[INFO] multi_node_query_pool append (103424, 0, (7, 0))
+[INFO] multi_node_query_pool append (103424, 0, (0, 0))
+[INFO] multi_node_query_pool append (103424, 0, (4, 0))
+[INFO] multi_node_query_pool append (104448, 0, (9, 0))
+[INFO] multi_node_query_pool append (104448, 0, (4, 0))
+[INFO] multi_node_query_pool append (104448, 0, (5, 0))
+[INFO] multi_node_query_pool append (104448, 0, (6, 0))
+[INFO] multi_node_query_pool append (105472, 0, (0, 0))
+[INFO] multi_node_query_pool append (105472, 0, (7, 0))
+[INFO] multi_node_query_pool append (105472, 0, (5, 0))
+[INFO] multi_node_query_pool append (105472, 0, (8, 0))
+[INFO] multi_node_query_pool append (106496, 0, (2, 0))
+[INFO] multi_node_query_pool append (106496, 0, (7, 0))
+[INFO] multi_node_query_pool append (106496, 0, (5, 0))
+[INFO] multi_node_query_pool append (106496, 0, (8, 0))
+[INFO] multi_node_query_pool append (107520, 0, (2, 0))
+[INFO] multi_node_query_pool append (107520, 0, (8, 0))
+[INFO] multi_node_query_pool append (107520, 0, (9, 0))
+[INFO] multi_node_query_pool append (107520, 0, (5, 0))
+[INFO] multi_node_query_pool append (108544, 0, (3, 0))
+[INFO] multi_node_query_pool append (108544, 0, (7, 0))
+[INFO] multi_node_query_pool append (108544, 0, (5, 0))
+[INFO] multi_node_query_pool append (108544, 0, (1, 0))
+[INFO] multi_node_query_pool append (109568, 0, (5, 0))
+[INFO] multi_node_query_pool append (109568, 0, (8, 0))
+[INFO] multi_node_query_pool append (109568, 0, (9, 0))
+[INFO] multi_node_query_pool append (109568, 0, (0, 0))
+[INFO] leaf reached at epoch=2 global_step=398; starting cosine lr decay: 0.0001 -> 1e-06 over 10 epochs (32000 steps)
+[INFO] start training epoch=2 sampler info=rank=0/8, node_list=len:100/[(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (1, 0), (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (1, 9)], doc_size=[321, 212, 257, 271, 246, 134, 421, 217, 278, 309, 277, 206, 256, 280, 193, 269, 185, 216, 319, 202], pos_queries=351282 multi_node_query_pool_size=702564
+[INFO] shuffle rank=0 seed=2_0 node_list=[(6, 6), (1, 0), (0, 6), (7, 2), (4, 9), (7, 5), (2, 4), (8, 3), (1, 6), (4, 3), (9, 8), (7, 6), (8, 7), (8, 8), (8, 1), (8, 6), (5, 6), (9, 4), (4, 4), (3, 3)]
+[INFO] precomputed leaf batches epoch=2 num_batches=3200 num_samples=409600 pool_cache_size=0 elapsed=2.82s
+[training info] epoch=2 step=0/3200 metrcis=cnt=1
+total_loss=0.89
+cot_loss=0.62
+sn_ratio=0.34
+level0/swav_loss=0.00
+level0/acc_q=0.72
+level0/acc_d=0.98
+level1/swav_loss=0.00
+level1/acc_q=0.73
+level1/acc_d=0.98
+level2/contrastive_loss=0.28
+lr=1.000e-04
+[training info] epoch=2 step=10/3200 metrcis=cnt=10
+total_loss=0.90
+cot_loss=0.66
+sn_ratio=0.27
+level0/swav_loss=0.00
+level0/acc_q=0.57
+level0/acc_d=0.81
+level1/swav_loss=0.00
+level1/acc_q=0.67
+level1/acc_d=0.85
+level2/contrastive_loss=0.24
+lr=1.000e-04
+[training info] epoch=2 step=50/3200 metrcis=cnt=40
+total_loss=0.91
+cot_loss=0.68
+sn_ratio=0.32
+level0/swav_loss=0.00
+level0/acc_q=0.46
+level0/acc_d=0.60
+level1/swav_loss=0.00
+level1/acc_q=0.51
+level1/acc_d=0.65
+level2/contrastive_loss=0.23
+lr=1.000e-04
+[training info] epoch=2 step=100/3200 metrcis=cnt=50
+total_loss=0.89
+cot_loss=0.69
+sn_ratio=0.34
+level0/swav_loss=0.00
+level0/acc_q=0.41
+level0/acc_d=0.54
+level1/swav_loss=0.00
+level1/acc_q=0.49
+level1/acc_d=0.63
+level2/contrastive_loss=0.21
+lr=1.000e-04
+[2026-09-08 15:53:36,765] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[2026-09-08 16:53:40,044] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] epoch=2 step=1000/3200 metrcis=cnt=900
+total_loss=0.84
+cot_loss=0.66
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.34
+level0/acc_d=0.39
+level1/swav_loss=0.00
+level1/acc_q=0.45
+level1/acc_d=0.56
+level2/contrastive_loss=0.18
+lr=9.976e-05
+[BARRIER-PROBE][train_ep2_step1000] rank=0 wait=0.00s ok
+[2026-09-08 17:53:43,338] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[2026-09-08 18:53:46,566] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] epoch=2 step=2000/3200 metrcis=cnt=1000
+total_loss=0.76
+cot_loss=0.61
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.31
+level0/acc_d=0.36
+level1/swav_loss=0.00
+level1/acc_q=0.42
+level1/acc_d=0.52
+level2/contrastive_loss=0.14
+lr=9.905e-05
+[BARRIER-PROBE][train_ep2_step2000] rank=0 wait=0.00s ok
+[2026-09-08 19:53:49,737] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[2026-09-08 20:53:52,894] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] epoch=2 step=3000/3200 metrcis=cnt=1000
+total_loss=0.69
+cot_loss=0.57
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.29
+level0/acc_d=0.34
+level1/swav_loss=0.00
+level1/acc_q=0.40
+level1/acc_d=0.49
+level2/contrastive_loss=0.12
+lr=9.787e-05
+[BARRIER-PROBE][train_ep2_step3000] rank=0 wait=0.00s ok
+[2026-09-08 21:53:56,151] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] epoch=2 step=3199/3200 metrcis=cnt=1199
+total_loss=0.68
+cot_loss=0.56
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.29
+level0/acc_d=0.34
+level1/swav_loss=0.00
+level1/acc_q=0.39
+level1/acc_d=0.49
+level2/contrastive_loss=0.12
+lr=9.758e-05
+[BARRIER-PROBE][epoch2_train_end] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch2_after_save] rank=0 wait=0.00s ok
+[INFO] start benchmark at epoch=2
+[INF] load corpus size=109739 from /data/oss_bucket_0/kesi/genret/dataset/nq320k/corpus_lite.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-09-08 22:11:25.641179
+[INF] end of merge index_map, 2026-09-08 22:11:26.622283
+[build_index] done: 100 leaf nodes (this rank), 109744 total doc-node entries, 109739 unique docs min/max docs: 110/3050
+[INFO] index saved to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep002/index.pt
+[INFO] index_info (this rank) = 100/100=1.00 leaf nodes, docs_of_node min/max/avg=110/3050/1097.44
+[INFO] index_info (global)    = 800/100=8.00 leaf nodes, docs_of_node min/max/avg=110/3050/1097.44
+[INF] load corpus size=7832 from /data/oss_bucket_0/kesi/genret/dataset/nq320k/dev.jsonl vl_mode=False query_side=False
+[METRICS] hit@1=0.5734  hit@10=0.6956  hit@100=0.7112  mrr@10=0.6212  mrr@100=0.6220  leaf_hit=0.7150  leaf_mrr=0.3267  leaf_hit@1=0.1969  leaf_hit@6=0.5243  leaf_hit@11=0.6471  leaf_hit@16=0.7150  total=7832
+[INFO] min/mean/max candidate_docs=7686/19461.9/29008 min/mean/max uniq_candidate_docs=7686/19461.1/29006 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep002/bench_result_gt_cot_part0.jsonl
+[METRICS] hit@1=0.4990  hit@10=0.6065  hit@100=0.6228  mrr@10=0.5406  mrr@100=0.5414  leaf_hit=0.6267  leaf_mrr=0.2704  leaf_hit@1=0.1547  leaf_hit@6=0.4442  leaf_hit@11=0.5595  leaf_hit@16=0.6267  total=7832
+[INFO] min/mean/max candidate_docs=9813/19318.4/29153 min/mean/max uniq_candidate_docs=9813/19317.6/29152 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep002/bench_result_selfcot_0_part0.jsonl
+[METRICS] hit@1=0.5461  hit@10=0.6682  hit@100=0.6860  mrr@10=0.5938  mrr@100=0.5946  leaf_hit=0.6905  leaf_mrr=0.3108  leaf_hit@1=0.1841  leaf_hit@6=0.5046  leaf_hit@11=0.6242  leaf_hit@16=0.6905  total=7832
+[INFO] min/mean/max candidate_docs=7458/19628.6/30679 min/mean/max uniq_candidate_docs=7458/19627.8/30679 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep002/bench_result_selfcot_8_part0.jsonl
+[METRICS] hit@1=0.5568  hit@10=0.6799  hit@100=0.6970  mrr@10=0.6054  mrr@100=0.6063  leaf_hit=0.7008  leaf_mrr=0.3179  leaf_hit@1=0.1900  leaf_hit@6=0.5116  leaf_hit@11=0.6371  leaf_hit@16=0.7008  total=7832
+[INFO] min/mean/max candidate_docs=9017/19528.4/30302 min/mean/max uniq_candidate_docs=9017/19527.6/30302 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep002/bench_result_selfcot_16_part0.jsonl
+[METRICS] hit@1=0.5618  hit@10=0.6856  hit@100=0.7028  mrr@10=0.6104  mrr@100=0.6113  leaf_hit=0.7066  leaf_mrr=0.3193  leaf_hit@1=0.1896  leaf_hit@6=0.5166  leaf_hit@11=0.6416  leaf_hit@16=0.7066  total=7832
+[INFO] min/mean/max candidate_docs=7969/19423.9/30679 min/mean/max uniq_candidate_docs=7969/19423.1/30679 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep002/bench_result_selfcot_32_part0.jsonl
+[METRICS] hit@1=0.5632  hit@10=0.6860  hit@100=0.7020  mrr@10=0.6113  mrr@100=0.6120  leaf_hit=0.7056  leaf_mrr=0.3207  leaf_hit@1=0.1908  leaf_hit@6=0.5188  leaf_hit@11=0.6426  leaf_hit@16=0.7056  total=7832
+[INFO] min/mean/max candidate_docs=8766/19454.4/30993 min/mean/max uniq_candidate_docs=8766/19453.5/30993 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep002/bench_result_selfcot_64_part0.jsonl
+[METRICS] hit@1=0.5624  hit@10=0.6871  hit@100=0.7030  mrr@10=0.6108  mrr@100=0.6115  leaf_hit=0.7068  leaf_mrr=0.3235  leaf_hit@1=0.1959  leaf_hit@6=0.5190  leaf_hit@11=0.6420  leaf_hit@16=0.7068  total=7832
+[INFO] min/mean/max candidate_docs=8496/19535.7/29455 min/mean/max uniq_candidate_docs=8496/19534.9/29455 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep002/bench_result_selfcot_80_part0.jsonl
+[INFO] benchmark gt_cot epoch=2 samples=7832 hit@1=0.5734 hit@10=0.6956 hit@100=0.7112 mrr@10=0.6212 mrr@100=0.6220 leaf_hit=0.7150 leaf_mrr=0.3267 leaf_hit@1=0.1969 leaf_hit@6=0.5243 leaf_hit@11=0.6471 leaf_hit@16=0.7150
+[INFO] benchmark selfcot_0 epoch=2 samples=7832 hit@1=0.4990 hit@10=0.6065 hit@100=0.6228 mrr@10=0.5406 mrr@100=0.5414 leaf_hit=0.6267 leaf_mrr=0.2704 leaf_hit@1=0.1547 leaf_hit@6=0.4442 leaf_hit@11=0.5595 leaf_hit@16=0.6267
+[INFO] benchmark selfcot_8 epoch=2 samples=7832 hit@1=0.5461 hit@10=0.6682 hit@100=0.6860 mrr@10=0.5938 mrr@100=0.5946 leaf_hit=0.6905 leaf_mrr=0.3108 leaf_hit@1=0.1841 leaf_hit@6=0.5046 leaf_hit@11=0.6242 leaf_hit@16=0.6905
+[INFO] benchmark selfcot_16 epoch=2 samples=7832 hit@1=0.5568 hit@10=0.6799 hit@100=0.6970 mrr@10=0.6054 mrr@100=0.6063 leaf_hit=0.7008 leaf_mrr=0.3179 leaf_hit@1=0.1900 leaf_hit@6=0.5116 leaf_hit@11=0.6371 leaf_hit@16=0.7008
+[INFO] benchmark selfcot_32 epoch=2 samples=7832 hit@1=0.5618 hit@10=0.6856 hit@100=0.7028 mrr@10=0.6104 mrr@100=0.6113 leaf_hit=0.7066 leaf_mrr=0.3193 leaf_hit@1=0.1896 leaf_hit@6=0.5166 leaf_hit@11=0.6416 leaf_hit@16=0.7066
+[INFO] benchmark selfcot_64 epoch=2 samples=7832 hit@1=0.5632 hit@10=0.6860 hit@100=0.7020 mrr@10=0.6113 mrr@100=0.6120 leaf_hit=0.7056 leaf_mrr=0.3207 leaf_hit@1=0.1908 leaf_hit@6=0.5188 leaf_hit@11=0.6426 leaf_hit@16=0.7056
+[INFO] benchmark selfcot_80 epoch=2 samples=7832 hit@1=0.5624 hit@10=0.6871 hit@100=0.7030 mrr@10=0.6108 mrr@100=0.6115 leaf_hit=0.7068 leaf_mrr=0.3235 leaf_hit@1=0.1959 leaf_hit@6=0.5190 leaf_hit@11=0.6420 leaf_hit@16=0.7068
+[INFO] benchmark NodeBalance epoch=2
+level1 doc_balance=27.73(max=3050/min=110/nodes=100)
+[BARRIER-PROBE][epoch2_before_doc_balance] rank=0 wait=0.01s ok
+[INF] load corpus size=109739 from /data/oss_bucket_0/kesi/genret/dataset/nq320k/corpus_lite.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-09-08 22:28:32.645655
+[INF] end of merge index_map, 2026-09-08 22:28:32.858786
+[build_index] done: 100 leaf nodes (this rank), 10240 total doc-node entries, 10240 unique docs min/max docs: 9/270
+[BARRIER-PROBE][epoch2_after_doc_balance] rank=0 wait=0.01s ok
+[INFO] eval DEV at epoch=2 NodeBalance=level0 doc_balance=6.83(max=1919/min=281/nodes=10)
+level1 doc_balance=30.00(max=270/min=9/nodes=100)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:4.0/4.0/4.0
+result=###################################################################
+****wocot:depth1/hit@1=0.382
+****wocot:depth1/hit@8=0.806
+****wocot:depth1/hit@16=0.806
+****wocot:depth1/hit@32=0.806
+****wocot:depth2/hit@1=0.166
+****wocot:depth2/hit@8=0.562
+****wocot:depth2/hit@16=0.711
+****wocot:depth2/hit@32=0.797
+****gtcot:depth1/hit@1=0.386
+****gtcot:depth1/hit@8=0.810
+****gtcot:depth1/hit@16=0.810
+****gtcot:depth1/hit@32=0.810
+****gtcot:depth2/hit@1=0.171
+****gtcot:depth2/hit@8=0.572
+****gtcot:depth2/hit@16=0.720
+****gtcot:depth2/hit@32=0.802
+[INFO] keep active_depth=2 (already at tree_depth=2)
+[INFO] start training epoch=3 sampler info=rank=0/8, node_list=len:100/[(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (1, 0), (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (1, 9)], doc_size=[343, 235, 274, 240, 233, 152, 440, 200, 263, 324, 276, 188, 244, 277, 208, 272, 198, 203, 317, 195], pos_queries=351282 multi_node_query_pool_size=702564
+[INFO] shuffle rank=0 seed=3_0 node_list=[(3, 6), (1, 4), (4, 4), (4, 7), (1, 9), (3, 2), (4, 1), (8, 2), (3, 0), (7, 5), (1, 8), (7, 3), (5, 8), (8, 0), (1, 3), (8, 7), (9, 0), (0, 3), (5, 9), (9, 4)]
+[INFO] precomputed leaf batches epoch=3 num_batches=3200 num_samples=409600 pool_cache_size=0 elapsed=2.97s
+[training info] epoch=3 step=0/3200 metrcis=cnt=1
+total_loss=0.56
+cot_loss=0.51
+sn_ratio=0.49
+level0/swav_loss=0.00
+level0/acc_q=0.20
+level0/acc_d=0.33
+level1/swav_loss=0.00
+level1/acc_q=0.37
+level1/acc_d=0.46
+level2/contrastive_loss=0.05
+lr=9.758e-05
+[training info] epoch=3 step=10/3200 metrcis=cnt=10
+total_loss=0.59
+cot_loss=0.51
+sn_ratio=0.30
+level0/swav_loss=0.00
+level0/acc_q=0.25
+level0/acc_d=0.32
+level1/swav_loss=0.00
+level1/acc_q=0.38
+level1/acc_d=0.47
+level2/contrastive_loss=0.09
+lr=9.756e-05
+[training info] epoch=3 step=50/3200 metrcis=cnt=40
+total_loss=0.59
+cot_loss=0.51
+sn_ratio=0.32
+level0/swav_loss=0.00
+level0/acc_q=0.27
+level0/acc_d=0.32
+level1/swav_loss=0.00
+level1/acc_q=0.36
+level1/acc_d=0.45
+level2/contrastive_loss=0.09
+lr=9.750e-05
+[training info] epoch=3 step=100/3200 metrcis=cnt=50
+total_loss=0.61
+cot_loss=0.51
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.27
+level0/acc_d=0.32
+level1/swav_loss=0.00
+level1/acc_q=0.38
+level1/acc_d=0.47
+level2/contrastive_loss=0.09
+lr=9.742e-05
+[2026-09-08 22:53:59,422] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[2026-09-08 23:54:02,587] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] epoch=3 step=1000/3200 metrcis=cnt=900
+total_loss=0.59
+cot_loss=0.50
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.27
+level0/acc_d=0.31
+level1/swav_loss=0.00
+level1/acc_q=0.37
+level1/acc_d=0.45
+level2/contrastive_loss=0.09
+lr=9.585e-05
+[BARRIER-PROBE][train_ep3_step1000] rank=0 wait=0.00s ok
+[2026-09-09 00:54:05,812] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[2026-09-09 01:54:09,022] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] epoch=3 step=2000/3200 metrcis=cnt=1000
+total_loss=0.57
+cot_loss=0.49
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.26
+level0/acc_d=0.31
+level1/swav_loss=0.00
+level1/acc_q=0.36
+level1/acc_d=0.45
+level2/contrastive_loss=0.08
+lr=9.369e-05
+[BARRIER-PROBE][train_ep3_step2000] rank=0 wait=0.00s ok
+[2026-09-09 02:54:12,201] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[2026-09-09 03:54:15,473] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] epoch=3 step=3000/3200 metrcis=cnt=1000
+total_loss=0.52
+cot_loss=0.45
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.25
+level0/acc_d=0.29
+level1/swav_loss=0.00
+level1/acc_q=0.34
+level1/acc_d=0.42
+level2/contrastive_loss=0.07
+lr=9.111e-05
+[BARRIER-PROBE][train_ep3_step3000] rank=0 wait=0.00s ok
+[2026-09-09 04:54:18,735] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] epoch=3 step=3199/3200 metrcis=cnt=1199
+total_loss=0.52
+cot_loss=0.45
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.25
+level0/acc_d=0.29
+level1/swav_loss=0.00
+level1/acc_q=0.34
+level1/acc_d=0.42
+level2/contrastive_loss=0.07
+lr=9.055e-05
+[BARRIER-PROBE][epoch3_train_end] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch3_after_save] rank=0 wait=0.00s ok
+[INFO] start benchmark at epoch=3
+[INF] load corpus size=109739 from /data/oss_bucket_0/kesi/genret/dataset/nq320k/corpus_lite.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-09-09 05:17:17.602495
+[INF] end of merge index_map, 2026-09-09 05:17:18.562414
+[build_index] done: 100 leaf nodes (this rank), 109744 total doc-node entries, 109739 unique docs min/max docs: 194/3914
+[INFO] index saved to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep003/index.pt
+[INFO] index_info (this rank) = 100/100=1.00 leaf nodes, docs_of_node min/max/avg=194/3914/1097.44
+[INFO] index_info (global)    = 800/100=8.00 leaf nodes, docs_of_node min/max/avg=194/3914/1097.44
+[INF] load corpus size=7832 from /data/oss_bucket_0/kesi/genret/dataset/nq320k/dev.jsonl vl_mode=False query_side=False
+[METRICS] hit@1=0.5687  hit@10=0.6881  hit@100=0.7024  mrr@10=0.6157  mrr@100=0.6164  leaf_hit=0.7065  leaf_mrr=0.3228  leaf_hit@1=0.1964  leaf_hit@6=0.5198  leaf_hit@11=0.6387  leaf_hit@16=0.7065  total=7832
+[INFO] min/mean/max candidate_docs=7580/19718.8/33008 min/mean/max uniq_candidate_docs=7580/19717.9/33006 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep003/bench_result_gt_cot_part0.jsonl
+[METRICS] hit@1=0.4849  hit@10=0.5877  hit@100=0.6006  mrr@10=0.5248  mrr@100=0.5254  leaf_hit=0.6043  leaf_mrr=0.2592  leaf_hit@1=0.1486  leaf_hit@6=0.4299  leaf_hit@11=0.5448  leaf_hit@16=0.6043  total=7832
+[INFO] min/mean/max candidate_docs=7759/19431.8/32670 min/mean/max uniq_candidate_docs=7759/19430.8/32669 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep003/bench_result_selfcot_0_part0.jsonl
+[METRICS] hit@1=0.5499  hit@10=0.6712  hit@100=0.6855  mrr@10=0.5973  mrr@100=0.5981  leaf_hit=0.6901  leaf_mrr=0.3133  leaf_hit@1=0.1869  leaf_hit@6=0.5055  leaf_hit@11=0.6277  leaf_hit@16=0.6901  total=7832
+[INFO] min/mean/max candidate_docs=7660/19790.7/32245 min/mean/max uniq_candidate_docs=7660/19789.8/32243 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep003/bench_result_selfcot_8_part0.jsonl
+[METRICS] hit@1=0.5545  hit@10=0.6743  hit@100=0.6885  mrr@10=0.6018  mrr@100=0.6025  leaf_hit=0.6932  leaf_mrr=0.3127  leaf_hit@1=0.1877  leaf_hit@6=0.5072  leaf_hit@11=0.6267  leaf_hit@16=0.6932  total=7832
+[INFO] min/mean/max candidate_docs=7848/19780.2/32450 min/mean/max uniq_candidate_docs=7848/19779.2/32448 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep003/bench_result_selfcot_16_part0.jsonl
+[METRICS] hit@1=0.5619  hit@10=0.6819  hit@100=0.6964  mrr@10=0.6095  mrr@100=0.6102  leaf_hit=0.7003  leaf_mrr=0.3181  leaf_hit@1=0.1916  leaf_hit@6=0.5100  leaf_hit@11=0.6343  leaf_hit@16=0.7003  total=7832
+[INFO] min/mean/max candidate_docs=7319/19832.2/33225 min/mean/max uniq_candidate_docs=7319/19831.3/33222 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep003/bench_result_selfcot_32_part0.jsonl
+[METRICS] hit@1=0.5621  hit@10=0.6781  hit@100=0.6922  mrr@10=0.6076  mrr@100=0.6083  leaf_hit=0.6966  leaf_mrr=0.3185  leaf_hit@1=0.1937  leaf_hit@6=0.5094  leaf_hit@11=0.6313  leaf_hit@16=0.6966  total=7832
+[INFO] min/mean/max candidate_docs=7319/19728.7/32396 min/mean/max uniq_candidate_docs=7319/19727.8/32393 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep003/bench_result_selfcot_64_part0.jsonl
+[METRICS] hit@1=0.5628  hit@10=0.6809  hit@100=0.6952  mrr@10=0.6092  mrr@100=0.6100  leaf_hit=0.6994  leaf_mrr=0.3179  leaf_hit@1=0.1891  leaf_hit@6=0.5128  leaf_hit@11=0.6336  leaf_hit@16=0.6994  total=7832
+[INFO] min/mean/max candidate_docs=7169/19675.0/32612 min/mean/max uniq_candidate_docs=7169/19674.1/32609 min/mean/max num_nodes=16/16.0/16
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_sln_tln16_swav0/ep003/bench_result_selfcot_80_part0.jsonl
+[INFO] benchmark gt_cot epoch=3 samples=7832 hit@1=0.5687 hit@10=0.6881 hit@100=0.7024 mrr@10=0.6157 mrr@100=0.6164 leaf_hit=0.7065 leaf_mrr=0.3228 leaf_hit@1=0.1964 leaf_hit@6=0.5198 leaf_hit@11=0.6387 leaf_hit@16=0.7065
+[INFO] benchmark selfcot_0 epoch=3 samples=7832 hit@1=0.4849 hit@10=0.5877 hit@100=0.6006 mrr@10=0.5248 mrr@100=0.5254 leaf_hit=0.6043 leaf_mrr=0.2592 leaf_hit@1=0.1486 leaf_hit@6=0.4299 leaf_hit@11=0.5448 leaf_hit@16=0.6043
+[INFO] benchmark selfcot_8 epoch=3 samples=7832 hit@1=0.5499 hit@10=0.6712 hit@100=0.6855 mrr@10=0.5973 mrr@100=0.5981 leaf_hit=0.6901 leaf_mrr=0.3133 leaf_hit@1=0.1869 leaf_hit@6=0.5055 leaf_hit@11=0.6277 leaf_hit@16=0.6901
+[INFO] benchmark selfcot_16 epoch=3 samples=7832 hit@1=0.5545 hit@10=0.6743 hit@100=0.6885 mrr@10=0.6018 mrr@100=0.6025 leaf_hit=0.6932 leaf_mrr=0.3127 leaf_hit@1=0.1877 leaf_hit@6=0.5072 leaf_hit@11=0.6267 leaf_hit@16=0.6932
+[INFO] benchmark selfcot_32 epoch=3 samples=7832 hit@1=0.5619 hit@10=0.6819 hit@100=0.6964 mrr@10=0.6095 mrr@100=0.6102 leaf_hit=0.7003 leaf_mrr=0.3181 leaf_hit@1=0.1916 leaf_hit@6=0.5100 leaf_hit@11=0.6343 leaf_hit@16=0.7003
+[INFO] benchmark selfcot_64 epoch=3 samples=7832 hit@1=0.5621 hit@10=0.6781 hit@100=0.6922 mrr@10=0.6076 mrr@100=0.6083 leaf_hit=0.6966 leaf_mrr=0.3185 leaf_hit@1=0.1937 leaf_hit@6=0.5094 leaf_hit@11=0.6313 leaf_hit@16=0.6966
+[INFO] benchmark selfcot_80 epoch=3 samples=7832 hit@1=0.5628 hit@10=0.6809 hit@100=0.6952 mrr@10=0.6092 mrr@100=0.6100 leaf_hit=0.6994 leaf_mrr=0.3179 leaf_hit@1=0.1891 leaf_hit@6=0.5128 leaf_hit@11=0.6336 leaf_hit@16=0.6994
+[INFO] benchmark NodeBalance epoch=3
+level1 doc_balance=20.18(max=3914/min=194/nodes=100)
+[BARRIER-PROBE][epoch3_before_doc_balance] rank=0 wait=0.00s ok
+[INF] load corpus size=109739 from /data/oss_bucket_0/kesi/genret/dataset/nq320k/corpus_lite.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-09-09 05:34:25.242396
+[INF] end of merge index_map, 2026-09-09 05:34:25.387307
+[build_index] done: 100 leaf nodes (this rank), 10240 total doc-node entries, 10240 unique docs min/max docs: 14/352
+[BARRIER-PROBE][epoch3_after_doc_balance] rank=0 wait=0.00s ok
+[INFO] eval DEV at epoch=3 NodeBalance=level0 doc_balance=6.36(max=2322/min=365/nodes=10)
+level1 doc_balance=25.14(max=352/min=14/nodes=100)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:4.0/4.0/4.0
+result=###################################################################
+****wocot:depth1/hit@1=0.377
+****wocot:depth1/hit@8=0.805
+****wocot:depth1/hit@16=0.805
+****wocot:depth1/hit@32=0.805
+****wocot:depth2/hit@1=0.166
+****wocot:depth2/hit@8=0.553
+****wocot:depth2/hit@16=0.706
+****wocot:depth2/hit@32=0.797
+****gtcot:depth1/hit@1=0.385
+****gtcot:depth1/hit@8=0.810
+****gtcot:depth1/hit@16=0.810
+****gtcot:depth1/hit@32=0.810
+****gtcot:depth2/hit@1=0.169
+****gtcot:depth2/hit@8=0.562
+****gtcot:depth2/hit@16=0.712
+****gtcot:depth2/hit@32=0.801
+[INFO] keep active_depth=2 (already at tree_depth=2)
+[INFO] start training epoch=4 sampler info=rank=0/8, node_list=len:100/[(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (1, 0), (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (1, 9)], doc_size=[327, 214, 267, 248, 249, 137, 435, 207, 260, 318, 263, 211, 252, 279, 188, 291, 189, 218, 325, 204], pos_queries=351282 multi_node_query_pool_size=702564
+[INFO] shuffle rank=0 seed=4_0 node_list=[(0, 9), (2, 2), (6, 3), (7, 4), (8, 5), (5, 5), (1, 0), (4, 5), (8, 0), (7, 6), (4, 9), (0, 1), (1, 7), (1, 9), (3, 7), (7, 2), (5, 1), (8, 3), (1, 8), (2, 1)]
+[INFO] precomputed leaf batches epoch=4 num_batches=3200 num_samples=409600 pool_cache_size=0 elapsed=2.97s
+[training info] epoch=4 step=0/3200 metrcis=cnt=1
+total_loss=0.41
+cot_loss=0.37
+sn_ratio=0.32
+level0/swav_loss=0.00
+level0/acc_q=0.32
+level0/acc_d=0.27
+level1/swav_loss=0.00
+level1/acc_q=0.30
+level1/acc_d=0.45
+level2/contrastive_loss=0.05
+lr=9.055e-05
+[training info] epoch=4 step=10/3200 metrcis=cnt=10
+total_loss=0.47
+cot_loss=0.42
+sn_ratio=0.36
+level0/swav_loss=0.00
+level0/acc_q=0.24
+level0/acc_d=0.27
+level1/swav_loss=0.00
+level1/acc_q=0.34
+level1/acc_d=0.41
+level2/contrastive_loss=0.05
+lr=9.052e-05
+[training info] epoch=4 step=50/3200 metrcis=cnt=40
+total_loss=0.46
+cot_loss=0.40
+sn_ratio=0.31
+level0/swav_loss=0.00
+level0/acc_q=0.23
+level0/acc_d=0.27
+level1/swav_loss=0.00
+level1/acc_q=0.33
+level1/acc_d=0.42
+level2/contrastive_loss=0.05
+lr=9.040e-05
+[training info] epoch=4 step=100/3200 metrcis=cnt=50
+total_loss=0.46
+cot_loss=0.41
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.23
+level0/acc_d=0.28
+level1/swav_loss=0.00
+level1/acc_q=0.33
+level1/acc_d=0.42
+level2/contrastive_loss=0.05
+lr=9.026e-05
+[2026-09-09 05:54:21,901] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[2026-09-09 06:54:25,063] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] epoch=4 step=1000/3200 metrcis=cnt=900
+total_loss=0.46
+cot_loss=0.41
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.24
+level0/acc_d=0.28
+level1/swav_loss=0.00
+level1/acc_q=0.32
+level1/acc_d=0.40
+level2/contrastive_loss=0.05
+lr=8.750e-05
+[BARRIER-PROBE][train_ep4_step1000] rank=0 wait=0.00s ok
+[2026-09-09 07:54:28,280] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[2026-09-09 08:54:31,407] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] epoch=4 step=2000/3200 metrcis=cnt=1000
+total_loss=0.44
+cot_loss=0.39
+sn_ratio=0.33
+level0/swav_loss=0.00
+level0/acc_q=0.23
+level0/acc_d=0.28
+level1/swav_loss=0.00
+level1/acc_q=0.32
+level1/acc_d=0.40
+level2/contrastive_loss=0.05
+lr=8.410e-05
+[BARRIER-PROBE][train_ep4_step2000] rank=0 wait=0.00s ok
+[2026-09-09 09:54:34,613] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
