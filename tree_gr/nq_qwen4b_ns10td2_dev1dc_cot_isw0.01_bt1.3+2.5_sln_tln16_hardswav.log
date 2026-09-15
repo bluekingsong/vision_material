@@ -1,3 +1,5 @@
+hard_swav_label but only apply to active_depth < tree_depth levels.
+
 ====Input Arguments====
 {
   "model_name": "/data/oss_bucket_0/kesi/genret/Qwen3-4B",
