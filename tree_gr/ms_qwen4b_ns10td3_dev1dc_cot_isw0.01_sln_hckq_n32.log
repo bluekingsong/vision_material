@@ -1,5 +1,11 @@
 hc kmeans code quantization
 
+| 排名 | 文件 | epoch | hit@1 | hit@10 | hit@100 | **mrr@10** | mrr@100 | uniq_cand (mean) | leaf_hit | leaf_mrr | leaf_hit@1 | leaf_hit@11 | leaf_hit@22 | leaf_hit@32 | ckpt 路径 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | **sln_n32** | 16 | 0.4634 | 0.8328 | 0.9544 | **0.5882** | 0.5939 | 32153.0 | 0.9752 | 0.8654 | 0.8057 | 0.9608 | 0.9706 | 0.9752 | `.../model_ms_qwen4b_ns10td3_dev1dc_cot_isw0.01_sln_n32/ep016` |
+| 2 | **hckq_n32** | 3 | 0.4383 | 0.7821 | 0.8947 | **0.5543** | 0.5596 | 36175.1 | 0.9107 | 0.6424 | 0.5207 | 0.8569 | 0.8975 | 0.9107 | `.../model_ms_qwen4b_ns10td3_dev1dc_cot_isw0.01_sln_hckq_n32/ep003` |
+| 3 | **dpf_n32** | 35 | 0.4321 | 0.7956 | 0.9256 | **0.5535** | 0.5596 | 32120.0 | 0.9667 | 0.8672 | 0.8187 | 0.9445 | 0.9631 | 0.9667 | `.../model_ms_qwen4b_ns10td3_dev1dc_cot_isw0.01_sln_dpf_n32/ep035` |
+
 ====Input Arguments====
 {
   "model_name": "/data/oss_bucket_0/kesi/genret/Qwen3-4B",
