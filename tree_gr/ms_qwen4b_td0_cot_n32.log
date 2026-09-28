@@ -1,3 +1,169 @@
+ANN perf
+============================================================
+HCLLM Performance Benchmark
+============================================================
+  model: /home/jinsonglan.ljs/.cache/huggingface/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c
+  tree_depth: 0
+  num_subnode: 10
+  beam_size_limit: 8
+  topk_leaf_node: 32
+  topk: 100
+  max_query_tokens: 128
+  max_cot_tokens: 80
+  require_exact_cot_tokens: None
+  seed: 20250912
+  num_queries: 200
+  num_warmup: 2
+  num_runs: 5
+  gt_cot: False
+  full_ar_mode: False
+  use_ar_beam_search: False
+  cot_generation_mode: ar
+  beam_search_mode: ar
+  enable_ann: True
+  disable_prototype_feedback: False
+  ann_search_width: 2
+  ann_itopk_size: 0
+  ann_max_iterations: 0
+  device: cuda
+============================================================
+
+[BENCH] Measuring GPU peak memory ...
+  Peak GPU memory: 17524.71 MB
+
+[BENCH] Measuring latency (2 warmup + 5 runs) ...
+  Query 0: avg=2628.11 ms, std=21.95 ms
+  Query 1: avg=2688.50 ms, std=33.57 ms
+  Query 2: avg=2684.85 ms, std=40.90 ms
+  Query 199: avg=2623.85 ms, std=26.96 ms
+
+[BENCH] Measuring FLOPs (via torch.profiler) ...
+  Total FLOPs per query: 980,008,921,282
+  TFLOPs per query: 0.9800
+
+============================================================
+BENCHMARK RESULTS SUMMARY
+============================================================
+  GPU Peak Memory:   17524.71 MB
+  FLOPs per query:   980,008,921,282 (0.9800 TFLOPs)
+  Latency (ms):
+    avg=2693.96, std=104.60
+    min=2555.61, max=3728.28
+    p50=2671.78, p99=3189.40
+  Mean phase latency (ms):
+    input_prepare_ms: 0.430
+    prefill_ms: 33.460
+    cot_decode_ms: 2637.566
+    beam_search_on_tree_ms: 0.141
+    matrix_topk_ms: 15.785
+    phase_sum_ms: 2687.383
+    phase_residual_ms: 6.575
+  Mean matrix/top-k breakdown (ms):
+    candidate_lookup_ms: 0.000
+    index_h2d_pad_ms: 0.000
+    matrix_compute_ms: 0.000
+    scores_d2h_ms: 0.000
+    cpu_dedup_ms: 0.000
+    cpu_full_sort_ms: 0.000
+    topk_slice_ms: 0.000
+    cleanup_ms: 0.000
+    subphase_sum_ms: 0.000
+    residual_ms: 0.000
+  Mean workload counters:
+    cot_tokens_generated: 80.00
+    num_leaf_beams: 1.00
+    candidate_leaf_count: 0.00
+    scanned_doc_entries: 0.00
+    padded_doc_entries: 0.00
+    scoring_batch_count: 0.00
+    unique_doc_count: 0.00
+  ANN recall@100 (vs flat search):
+    avg=0.9700, min=0.3200, max=1.0000
+    p50=0.9800, p95=1.0000
+============================================================
+
+Linear Perf:
+============================================================
+HCLLM Performance Benchmark
+============================================================
+  model: /home/jinsonglan.ljs/.cache/huggingface/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c
+  tree_depth: 0
+  num_subnode: 10
+  beam_size_limit: 8
+  topk_leaf_node: 32
+  topk: 100
+  max_query_tokens: 128
+  max_cot_tokens: 80
+  require_exact_cot_tokens: None
+  seed: 20250912
+  num_queries: 200
+  num_warmup: 2
+  num_runs: 5
+  gt_cot: False
+  full_ar_mode: False
+  use_ar_beam_search: False
+  cot_generation_mode: ar
+  beam_search_mode: ar
+  enable_ann: False
+  disable_prototype_feedback: False
+  ann_search_width: 2
+  ann_itopk_size: 0
+  ann_max_iterations: 0
+  device: cuda
+============================================================
+
+[BENCH] Measuring GPU peak memory ...
+  Peak GPU memory: 17518.60 MB
+
+[BENCH] Measuring latency (2 warmup + 5 runs) ...
+  Query 0: avg=4130.41 ms, std=106.58 ms
+  Query 1: avg=3814.66 ms, std=20.87 ms
+  Query 2: avg=3874.36 ms, std=60.77 ms
+  Query 199: avg=4087.54 ms, std=213.33 ms
+
+[BENCH] Measuring FLOPs (via torch.profiler) ...
+  Total FLOPs per query: 985,128,921,282
+  TFLOPs per query: 0.9851
+
+============================================================
+BENCHMARK RESULTS SUMMARY
+============================================================
+  GPU Peak Memory:   17518.60 MB
+  FLOPs per query:   985,128,921,282 (0.9851 TFLOPs)
+  Latency (ms):
+    avg=3987.99, std=136.56
+    min=3711.83, max=4626.13
+    p50=3975.71, p99=4411.70
+  Mean phase latency (ms):
+    input_prepare_ms: 0.574
+    prefill_ms: 34.025
+    cot_decode_ms: 2650.671
+    beam_search_on_tree_ms: 0.140
+    matrix_topk_ms: 1302.294
+    phase_sum_ms: 3987.703
+    phase_residual_ms: 0.283
+  Mean matrix/top-k breakdown (ms):
+    candidate_lookup_ms: 0.003
+    index_h2d_pad_ms: 660.633
+    matrix_compute_ms: 2.955
+    scores_d2h_ms: 15.176
+    cpu_dedup_ms: 211.607
+    cpu_full_sort_ms: 299.288
+    topk_slice_ms: 0.006
+    cleanup_ms: 112.603
+    subphase_sum_ms: 1302.271
+    residual_ms: 0.023
+  Mean workload counters:
+    cot_tokens_generated: 80.00
+    num_leaf_beams: 1.00
+    candidate_leaf_count: 1.00
+    scanned_doc_entries: 1000000.00
+    padded_doc_entries: 1000000.00
+    scoring_batch_count: 1.00
+    unique_doc_count: 1000000.00
+============================================================
+
+
 ====Input Arguments====
 {
   "model_name": "/data/oss_bucket_0/kesi/genret/Qwen3-4B",
