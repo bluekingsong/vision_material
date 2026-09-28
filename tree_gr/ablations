@@ -1,0 +1,21 @@
+1. hard_swav_label = true or false 在 active_depth < tree_depth时无关紧要
+
+参数 ablation 结论：use_leaf_score True → False（第1687行已注释）
+MS MARCO TD3（7438 queries，TD3/叶子32）：
+
+指标	baseline (true)	本次 (false)	变化
+hit@1	46.17	42.26	-3.91
+hit@10	83.38	73.16	-10.22
+hit@100	95.47	82.45	-13.02
+mrr@10	58.72	52.75	-5.97
+mrr@100	59.28	53.21	-6.07
+leaf_hit / leaf_mrr	97.55 / 86.49	97.55 / 86.49	0
+NQ320K TD2（7832 queries，TD2/叶子16）：
+
+指标	baseline (true)	本次 (false)	变化
+hit@1	73.19	70.52	-2.67
+hit@10	92.01	86.53	-5.48
+hit@100	96.03	89.33	-6.70
+mrr@10	80.14	76.61	-3.53
+mrr@100	80.32	76.74	-3.58
+leaf_hit / leaf_mrr	98.83 / 91.40	98.83 / 91.40	0
