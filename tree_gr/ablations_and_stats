@@ -1,0 +1,56 @@
+1. hard_swav_label = true or false 在 active_depth < tree_depth时无关紧要
+
+参数 ablation 结论：use_leaf_score True → False（第1687行已注释）
+MS MARCO TD3（7438 queries，TD3/叶子32）：
+
+指标	baseline (true)	本次 (false)	变化
+hit@1	46.17	42.26	-3.91
+hit@10	83.38	73.16	-10.22
+hit@100	95.47	82.45	-13.02
+mrr@10	58.72	52.75	-5.97
+mrr@100	59.28	53.21	-6.07
+leaf_hit / leaf_mrr	97.55 / 86.49	97.55 / 86.49	0
+NQ320K TD2（7832 queries，TD2/叶子16）：
+
+指标	baseline (true)	本次 (false)	变化
+hit@1	73.19	70.52	-2.67
+hit@10	92.01	86.53	-5.48
+hit@100	96.03	89.33	-6.70
+mrr@10	80.14	76.61	-3.53
+mrr@100	80.32	76.74	-3.58
+leaf_hit / leaf_mrr	98.83 / 91.40	98.83 / 91.40	0
+
+num docs of leaf stat
+模型索引	Leaf nodes	Min	Max	Median	Avg
+model_nq...ep015/index.pt	100	879	1494	1088	1097.44
+model_ms.../ep016/index.pt	1000	634	1486	998	1000.00
+
+
+selfcot_0 nq320k seen/unseen
+
+已完成计算，全程未重新推理，只读取已有的 bench_result_selfcot_0_part*.jsonl。
+
+样本划分
+Overall：7832
+Seen：6075
+Unseen：1755
+Untagged：2
+注意：dev.json.seen 和 dev.json.unseen 合计只覆盖 7830 条，缺少 dev index 7830、7831。Overall 仍按完整 7832 条计算。
+
+结果
+model_nq_qwen4b_td0_cot+ep012
+Split	Count	hit@1	hit@10	hit@100	mrr@10	mrr@100	leaf_hit	leaf_mrr
+Overall	7832	0.702630	0.927222	0.973059	0.786909	0.789116	1.000000	1.000000
+Seen	6075	0.703374	0.929053	0.974650	0.787106	0.789330	1.000000	1.000000
+Unseen	1755	0.700285	0.920798	0.967521	0.786462	0.788609	1.000000	1.000000
+
+结果文件：
+/home/jinsonglan.ljs/GenRet/dumpsv2/model_nq_qwen4b_td0_cot+ep012/retrieval_metrics_selfcot_0_seen_unseen.json
+
+model_nq_qwen4b_ns10td2_dev1dc_cot_isw0.01_bt1.3+2.5_sln_tln16_sgs2+ep015
+Split	Count	hit@1	hit@10	hit@100	mrr@10	mrr@100	leaf_hit	leaf_mrr
+Overall	7832	0.718846	0.917901	0.961057	0.792286	0.794333	0.989019	0.905347
+Seen	6075	0.721811	0.921317	0.963457	0.794936	0.796956	0.990453	0.905576
+Unseen	1755	0.708832	0.905983	0.952707	0.783160	0.785307	0.984046	0.904447
+结果文件：
+/home/jinsonglan.ljs/GenRet/dumpsv2/model_nq_qwen4b_ns10td2_dev1dc_cot_isw0.01_bt1.3+2.5_sln_tln16_sgs2+ep015/retrieval_metrics_selfcot_0_seen_unseen.json`
