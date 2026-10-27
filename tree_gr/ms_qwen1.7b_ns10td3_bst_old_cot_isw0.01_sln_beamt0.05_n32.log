@@ -1,0 +1,1630 @@
+{
+  "model_name": "/data/oss_bucket_0/kesi/genret/Qwen3-1.7B",
+  "num_subnode": 10,
+  "tree_depth": 3,
+  "active_depth": 0,
+  "kmeans_quant_file": "/data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/hc_kmeans.json",
+  "enable_kmeans_quant": false,
+  "dump_model_steps": 1000,
+  "train_filename": "/data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/train.qg.jsonl",
+  "dev_filename": "/data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/dev.jsonl",
+  "corpus_filename": "/data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl",
+  "dev_corpus_filename": null,
+  "doc_id_list_file": "/data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/doc_id_list.json",
+  "save_path": "/data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32",
+  "load_path": null,
+  "epochs": 150,
+  "sinkhorn_epsilon": 0.08,
+  "split_group_size": 4,
+  "i2c_temperature": 0.1,
+  "beam_temperature": 0.05,
+  "leaf_temp": 0.05,
+  "lr": 0.0001,
+  "warmup_ratio": 0.01,
+  "acc_thres": 0.9,
+  "balance_thres": [
+    1.2,
+    1.8,
+    5.0
+  ],
+  "doc_index_first": false,
+  "remove_params": "",
+  "local_rank": 0,
+  "deepspeed_config": "ds_config.json",
+  "cl_weight": 0.5,
+  "leaf_cl_factor": 1,
+  "max_doc_tokens": 128,
+  "max_query_tokens": 128,
+  "beam_size_limit": 8,
+  "random_max_query_tokens": null,
+  "num_workers": 4,
+  "batch_size": 128,
+  "beam_doc_topk": -1,
+  "expand_doc_topk": 1,
+  "min_p": 0.0,
+  "improved_nce": false,
+  "fn_threshold": 0.1,
+  "max_balance_mode": false,
+  "online_cot_bs": 64,
+  "distributed_index": false,
+  "index_gather_gloo": false,
+  "split_thres": 100,
+  "swav_weight": 1,
+  "internal_swav_weight": 0.01,
+  "binary_leaf_loss": false,
+  "no_internal_cl": false,
+  "cot_weight": 1,
+  "qa_cot_weight": 1,
+  "leaf_cot_weight": -1,
+  "inc_cotw": false,
+  "query_mode": "cot",
+  "attn_mask_4d": false,
+  "teacher_assign_mode": false,
+  "last_world_size": 32,
+  "lr_decay_ratio": 1.0,
+  "lr_cosine_decay_epochs": 10,
+  "lr_min": 1e-06,
+  "topk_leaf_node": 32,
+  "leaf_expand_mode": "doc",
+  "neg_query_ratio": 0.25,
+  "vl_orig_tokens": 36,
+  "vl_crop_tokens": 144,
+  "vl_resize_raw": false,
+  "random_img_ratio": -1,
+  "doc_centric": true,
+  "unfreeze_vit": false,
+  "enable_deepstack_image": false,
+  "ignore_pair_thres": 1,
+  "kgcate_margin": 0.0,
+  "leaf_cl_margin": 0.0,
+  "hard_swav_label": false,
+  "tree_growth_loss": "swav",
+  "line_contrastive_weight": 1.0,
+  "line_balance_weight": 1.0,
+  "line_sequence_weight": 1.0,
+  "stable_tree_bs": 16,
+  "global_leaf_embed_switch": false,
+  "auxio": false,
+  "enable_graph_sinkhorn": false,
+  "doc_sinkhorn_mode": false,
+  "disable_prototype_feedback": false,
+  "leaf_project_dim": 0,
+  "sample_leaf_negative": true,
+  "enable_grpo": false,
+  "grpo_group_size": 8,
+  "grpo_weight": 0.1,
+  "grpo_temperature": 1.0,
+  "grpo_max_new_tokens": 80,
+  "grpo_reward_model": "/home/jinsonglan.ljs/.cache/huggingface/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "grpo_reward_max_length": 256,
+  "grpo_reward_batch_size": 32,
+  "qa_mode": false,
+  "train_sft_filename": null,
+  "dev_sft_filename": null,
+  "qa_sft_batch_size": 8,
+  "qa_sft_max_length": 1280,
+  "attn_impl": "auto",
+  "node_rank": 0,
+  "node_size": 32,
+  "split_group_world_size": 8,
+  "split_group_id": 0,
+  "cot_prompt": "<|im_start|>user\nuser ask \"%s\" in web search, what topic he want to know? reply in several sentences.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+}
+[INFO] num_token_added:4 vl_mode=False
+[INFO] Using attn_implementation=flash_attention_2
+[INFO] split_group=0/4 ranks=[0, 1, 2, 3, 4, 5, 6, 7]
+[INF] load corpus size=31248 docs_with_query_cnt=31248 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/train.qg.jsonl vl_mode=False
+[INF] load corpus size=7438 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/dev.jsonl vl_mode=False query_side=False
+[INFO] start training epoch=0 sampler info=rank=0/32, node_list=len:1/[()], doc_size=[31248], pos_queries=0 multi_node_query_pool_size=281232
+[INFO] shuffle rank=0 seed=0_0 node_list=[()]
+[training info] epoch=0 step=0/245 metrcis=cnt=1
+total_loss=14.82
+cot_loss=1.77
+level0/swav_loss=4.63
+level0/acc=0.99
+level0/balance_ratio=127.00
+level0/contrastive_loss=8.41
+lr=4.082e-07
+[training info] epoch=0 step=10/245 metrcis=cnt=11
+total_loss=14.58
+cot_loss=1.54
+level0/swav_loss=4.62
+level0/acc=0.89
+level0/balance_ratio=117.18
+level0/contrastive_loss=8.42
+lr=4.490e-06
+[training info] epoch=0 step=50/245 metrcis=cnt=51
+total_loss=12.04
+cot_loss=1.02
+level0/swav_loss=4.55
+level0/acc=0.65
+level0/balance_ratio=73.63
+level0/contrastive_loss=6.47
+lr=2.082e-05
+[training info] epoch=0 step=100/245 metrcis=cnt=101
+total_loss=9.67
+cot_loss=0.90
+level0/swav_loss=3.26
+level0/acc=0.75
+level0/balance_ratio=44.41
+level0/contrastive_loss=5.52
+lr=4.122e-05
+[training info] epoch=0 step=244/245 metrcis=cnt=245
+total_loss=7.54
+cot_loss=0.80
+level0/swav_loss=1.92
+level0/acc=0.83
+level0/balance_ratio=19.94
+level0/contrastive_loss=4.83
+lr=1.000e-04
+balance_ratio=2.14
+[BARRIER-PROBE][epoch0_train_end] rank=0 wait=0.23s ok
+[BARRIER-PROBE][epoch0_after_save] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch0_before_doc_balance] rank=0 wait=0.00s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-22 14:16:52.493651
+[INF] end of merge index_map, 2026-10-22 14:16:53.175089
+[build_index] done: 10 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 3908/4493
+[BARRIER-PROBE][epoch0_after_doc_balance] rank=0 wait=0.87s ok
+[INFO] eval DEV at epoch=0 NodeBalance=level0 doc_balance=1.15(max=4493/min=3908/nodes=10)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+result=###################################################################
+****wocot:depth1/hit@1=0.902
+****wocot:depth1/hit@16=0.994
+****wocot:depth1/hit@32=0.994
+****wocot:depth1/hit@64=0.994
+****gtcot:depth1/hit@1=0.913
+****gtcot:depth1/hit@16=0.995
+****gtcot:depth1/hit@32=0.995
+****gtcot:depth1/hit@64=0.995
+[INFO] keep active_depth to 0 acc_q=0.83/0.90 balance_ratio=2.14/1.20
+[INFO] start training epoch=1 sampler info=rank=0/32, node_list=len:1/[()], doc_size=[31248], pos_queries=0 multi_node_query_pool_size=281232
+[INFO] shuffle rank=0 seed=1_0 node_list=[()]
+[training info] epoch=1 step=0/245 metrcis=cnt=1
+total_loss=5.62
+cot_loss=0.69
+level0/swav_loss=0.79
+level0/acc=0.94
+level0/balance_ratio=2.57
+level0/contrastive_loss=4.15
+lr=1.000e-04
+[training info] epoch=1 step=10/245 metrcis=cnt=11
+total_loss=5.85
+cot_loss=0.68
+level0/swav_loss=0.79
+level0/acc=0.92
+level0/balance_ratio=2.41
+level0/contrastive_loss=4.38
+lr=1.000e-04
+[training info] epoch=1 step=50/245 metrcis=cnt=51
+total_loss=5.84
+cot_loss=0.67
+level0/swav_loss=0.78
+level0/acc=0.91
+level0/balance_ratio=2.66
+level0/contrastive_loss=4.38
+lr=1.000e-04
+[training info] epoch=1 step=100/245 metrcis=cnt=101
+total_loss=5.80
+cot_loss=0.67
+level0/swav_loss=0.79
+level0/acc=0.92
+level0/balance_ratio=2.70
+level0/contrastive_loss=4.35
+lr=1.000e-04
+[training info] epoch=1 step=244/245 metrcis=cnt=245
+total_loss=5.65
+cot_loss=0.66
+level0/swav_loss=0.77
+level0/acc=0.92
+level0/balance_ratio=2.61
+level0/contrastive_loss=4.22
+lr=1.000e-04
+balance_ratio=1.11
+[BARRIER-PROBE][epoch1_train_end] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch1_after_save] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch1_before_doc_balance] rank=0 wait=0.11s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-22 14:34:40.850314
+[INF] end of merge index_map, 2026-10-22 14:34:44.470957
+[build_index] done: 10 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 3821/4365
+[BARRIER-PROBE][epoch1_after_doc_balance] rank=0 wait=0.24s ok
+[INFO] eval DEV at epoch=1 NodeBalance=level0 doc_balance=1.14(max=4365/min=3821/nodes=10)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+result=###################################################################
+****wocot:depth1/hit@1=0.907
+****wocot:depth1/hit@16=0.996
+****wocot:depth1/hit@32=0.996
+****wocot:depth1/hit@64=0.996
+****gtcot:depth1/hit@1=0.916
+****gtcot:depth1/hit@16=0.996
+****gtcot:depth1/hit@32=0.996
+****gtcot:depth1/hit@64=0.996
+[INFO] increase active_depth from 0 to 1 acc_q=0.92/0.90 balance_ratio=1.11/1.20
+[INFO] expanded DocBeamCache docs=31248
+[INFO] start training epoch=2 sampler info=rank=0/32, node_list=len:10/[(0,), (1,), (2,), (3,), (4,), (5,), (6,), (7,), (8,), (9,)], doc_size=[2954, 3112, 3101, 3125, 3246, 3327, 3238, 3082, 2963, 3100], pos_queries=0 multi_node_query_pool_size=281232
+[INFO] shuffle rank=0 seed=2_0 node_list=[(3,), (2,), (4,), (9,), (1,), (0,), (5,), (8,), (7,), (6,)]
+[training info] epoch=2 step=0/310 metrcis=cnt=1
+total_loss=10.43
+cot_loss=0.63
+level0/swav_loss=0.63
+level0/acc_q=0.96
+level0/acc_d=1.00
+level1/swav_loss=4.54
+level1/acc=0.62
+level1/balance_ratio=55.00
+level1/contrastive_loss=4.64
+lr=1.000e-04
+[training info] epoch=2 step=10/310 metrcis=cnt=11
+total_loss=9.34
+cot_loss=0.62
+level0/swav_loss=0.70
+level0/acc_q=0.95
+level0/acc_d=0.99
+level1/swav_loss=4.50
+level1/acc=0.65
+level1/balance_ratio=45.91
+level1/contrastive_loss=3.52
+lr=1.000e-04
+[training info] epoch=2 step=50/310 metrcis=cnt=51
+total_loss=8.02
+cot_loss=0.64
+level0/swav_loss=0.86
+level0/acc_q=0.93
+level0/acc_d=0.96
+level1/swav_loss=3.67
+level1/acc=0.77
+level1/balance_ratio=30.20
+level1/contrastive_loss=2.86
+lr=1.000e-04
+[2026-10-22 14:42:32,553] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[training info] epoch=2 step=100/310 metrcis=cnt=101
+total_loss=7.39
+cot_loss=0.64
+level0/swav_loss=0.84
+level0/acc_q=0.93
+level0/acc_d=0.97
+level1/swav_loss=2.77
+level1/acc=0.81
+level1/balance_ratio=18.65
+level1/contrastive_loss=3.13
+lr=1.000e-04
+[training info] epoch=2 step=309/310 metrcis=cnt=310
+total_loss=6.36
+cot_loss=0.65
+level0/swav_loss=0.77
+level0/acc_q=0.93
+level0/acc_d=0.97
+level1/swav_loss=1.74
+level1/acc=0.85
+level1/balance_ratio=8.18
+level1/contrastive_loss=3.20
+lr=1.000e-04
+balance_ratio=2.36
+[BARRIER-PROBE][epoch2_train_end] rank=0 wait=0.10s ok
+[BARRIER-PROBE][epoch2_after_save] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch2_before_doc_balance] rank=0 wait=0.50s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-22 14:59:37.580265
+[INF] end of merge index_map, 2026-10-22 14:59:38.395170
+[build_index] done: 100 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 309/540
+[BARRIER-PROBE][epoch2_after_doc_balance] rank=0 wait=1.01s ok
+[INFO] eval DEV at epoch=2 NodeBalance=level0 doc_balance=1.17(max=4432/min=3801/nodes=10)
+level1 doc_balance=1.75(max=540/min=309/nodes=100)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:5.0/5.0/5.0
+result=###################################################################
+****wocot:depth1/hit@1=0.907
+****wocot:depth1/hit@16=0.992
+****wocot:depth1/hit@32=0.992
+****wocot:depth1/hit@64=0.992
+****wocot:depth2/hit@1=0.819
+****wocot:depth2/hit@16=0.978
+****wocot:depth2/hit@32=0.985
+****wocot:depth2/hit@64=0.985
+****gtcot:depth1/hit@1=0.918
+****gtcot:depth1/hit@16=0.994
+****gtcot:depth1/hit@32=0.994
+****gtcot:depth1/hit@64=0.994
+****gtcot:depth2/hit@1=0.838
+****gtcot:depth2/hit@16=0.983
+****gtcot:depth2/hit@32=0.988
+****gtcot:depth2/hit@64=0.988
+[INFO] keep active_depth to 1 acc_q=0.85/0.89 balance_ratio=2.36/1.80
+[INFO] start training epoch=3 sampler info=rank=0/32, node_list=len:10/[(3,), (2,), (4,), (9,), (1,), (0,), (5,), (8,), (7,), (6,)], doc_size=[3125, 3101, 3246, 3100, 3112, 2954, 3327, 2963, 3082, 3238], pos_queries=0 multi_node_query_pool_size=281232
+[INFO] shuffle rank=0 seed=3_0 node_list=[(0,), (3,), (2,), (9,), (5,), (8,), (1,), (4,), (7,), (6,)]
+[training info] epoch=3 step=0/310 metrcis=cnt=1
+total_loss=6.07
+cot_loss=0.76
+level0/swav_loss=0.48
+level0/acc_q=0.93
+level0/acc_d=0.99
+level1/swav_loss=1.45
+level1/acc=0.86
+level1/balance_ratio=2.12
+level1/contrastive_loss=3.38
+lr=1.000e-04
+[training info] epoch=3 step=10/310 metrcis=cnt=11
+total_loss=5.66
+cot_loss=0.64
+level0/swav_loss=0.72
+level0/acc_q=0.92
+level0/acc_d=0.98
+level1/swav_loss=1.02
+level1/acc=0.90
+level1/balance_ratio=2.74
+level1/contrastive_loss=3.28
+lr=1.000e-04
+[training info] epoch=3 step=50/310 metrcis=cnt=51
+total_loss=5.63
+cot_loss=0.64
+level0/swav_loss=0.68
+level0/acc_q=0.93
+level0/acc_d=0.98
+level1/swav_loss=1.03
+level1/acc=0.90
+level1/balance_ratio=3.51
+level1/contrastive_loss=3.28
+lr=1.000e-04
+[training info] epoch=3 step=100/310 metrcis=cnt=101
+total_loss=5.62
+cot_loss=0.64
+level0/swav_loss=0.67
+level0/acc_q=0.94
+level0/acc_d=0.98
+level1/swav_loss=1.01
+level1/acc=0.90
+level1/balance_ratio=3.26
+level1/contrastive_loss=3.30
+lr=1.000e-04
+[training info] epoch=3 step=309/310 metrcis=cnt=310
+total_loss=5.58
+cot_loss=0.64
+level0/swav_loss=0.66
+level0/acc_q=0.94
+level0/acc_d=0.98
+level1/swav_loss=1.00
+level1/acc=0.90
+level1/balance_ratio=3.16
+level1/contrastive_loss=3.27
+lr=1.000e-04
+balance_ratio=1.48
+[BARRIER-PROBE][epoch3_train_end] rank=0 wait=0.16s ok
+[BARRIER-PROBE][epoch3_after_save] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch3_before_doc_balance] rank=0 wait=0.17s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-22 15:23:13.687615
+[INF] end of merge index_map, 2026-10-22 15:23:14.393633
+[build_index] done: 100 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 318/518
+[BARRIER-PROBE][epoch3_after_doc_balance] rank=0 wait=0.81s ok
+[INFO] eval DEV at epoch=3 NodeBalance=level0 doc_balance=1.16(max=4405/min=3784/nodes=10)
+level1 doc_balance=1.63(max=518/min=318/nodes=100)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:5.0/5.0/5.0
+result=###################################################################
+****wocot:depth1/hit@1=0.910
+****wocot:depth1/hit@16=0.994
+****wocot:depth1/hit@32=0.994
+****wocot:depth1/hit@64=0.994
+****wocot:depth2/hit@1=0.828
+****wocot:depth2/hit@16=0.982
+****wocot:depth2/hit@32=0.988
+****wocot:depth2/hit@64=0.988
+****gtcot:depth1/hit@1=0.923
+****gtcot:depth1/hit@16=0.995
+****gtcot:depth1/hit@32=0.995
+****gtcot:depth1/hit@64=0.995
+****gtcot:depth2/hit@1=0.847
+****gtcot:depth2/hit@16=0.987
+****gtcot:depth2/hit@32=0.991
+****gtcot:depth2/hit@64=0.991
+[INFO] increase active_depth from 1 to 2 acc_q=0.90/0.89 balance_ratio=1.48/1.80
+[INFO] expanded DocBeamCache docs=31248
+[INFO] start training epoch=4 sampler info=rank=0/32, node_list=len:100/[(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (1, 0), (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (1, 9)], doc_size=[312, 288, 289, 282, 300, 333, 257, 247, 309, 334, 313, 302, 315, 319, 316, 304, 331, 292, 322, 297], pos_queries=0 multi_node_query_pool_size=281232
+[INFO] shuffle rank=0 seed=4_0 node_list=[(0, 9), (2, 2), (6, 3), (7, 4), (8, 5), (5, 5), (1, 0), (4, 5), (8, 0), (7, 6), (4, 9), (0, 1), (1, 7), (1, 9), (3, 7), (7, 2), (5, 1), (8, 3), (1, 8), (2, 1)]
+[training info] epoch=4 step=0/400 metrcis=cnt=1
+total_loss=12.87
+cot_loss=0.67
+level0/swav_loss=0.68
+level0/acc_q=0.95
+level0/acc_d=1.00
+level1/swav_loss=1.77
+level1/acc_q=0.80
+level1/acc_d=0.98
+level2/swav_loss=4.57
+level2/acc=0.54
+level2/balance_ratio=50.00
+level2/contrastive_loss=5.17
+lr=1.000e-04
+[training info] epoch=4 step=10/400 metrcis=cnt=11
+total_loss=11.39
+cot_loss=0.62
+level0/swav_loss=0.66
+level0/acc_q=0.95
+level0/acc_d=0.99
+level1/swav_loss=1.17
+level1/acc_q=0.91
+level1/acc_d=0.97
+level2/swav_loss=4.53
+level2/acc=0.57
+level2/balance_ratio=52.73
+level2/contrastive_loss=4.41
+lr=1.000e-04
+[training info] epoch=4 step=50/400 metrcis=cnt=51
+total_loss=10.20
+cot_loss=0.64
+level0/swav_loss=0.59
+level0/acc_q=0.95
+level0/acc_d=0.99
+level1/swav_loss=1.35
+level1/acc_q=0.89
+level1/acc_d=0.94
+level2/swav_loss=4.46
+level2/acc=0.60
+level2/balance_ratio=36.49
+level2/contrastive_loss=3.16
+lr=1.000e-04
+[training info] epoch=4 step=100/400 metrcis=cnt=101
+total_loss=10.11
+cot_loss=0.65
+level0/swav_loss=0.59
+level0/acc_q=0.95
+level0/acc_d=0.99
+level1/swav_loss=1.34
+level1/acc_q=0.89
+level1/acc_d=0.93
+level2/swav_loss=4.29
+level2/acc=0.64
+level2/balance_ratio=35.76
+level2/contrastive_loss=3.25
+lr=1.000e-04
+[2026-10-22 15:42:36,153] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[training info] epoch=4 step=399/400 metrcis=cnt=400
+total_loss=9.72
+cot_loss=0.67
+level0/swav_loss=0.62
+level0/acc_q=0.94
+level0/acc_d=0.99
+level1/swav_loss=1.23
+level1/acc_q=0.89
+level1/acc_d=0.95
+level2/swav_loss=3.34
+level2/acc=0.73
+level2/balance_ratio=17.51
+level2/contrastive_loss=3.86
+lr=1.000e-04
+balance_ratio=31.39
+[BARRIER-PROBE][epoch4_train_end] rank=0 wait=0.29s ok
+[BARRIER-PROBE][epoch4_after_save] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch4_before_doc_balance] rank=0 wait=0.19s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-22 16:03:54.894406
+[INF] end of merge index_map, 2026-10-22 16:03:59.780211
+[build_index] done: 1000 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 1/92
+[BARRIER-PROBE][epoch4_after_doc_balance] rank=0 wait=0.63s ok
+[INFO] eval DEV at epoch=4 NodeBalance=level0 doc_balance=1.17(max=4396/min=3770/nodes=10)
+level1 doc_balance=1.78(max=518/min=291/nodes=100)
+level2 doc_balance=92.00(max=92/min=1/nodes=1000)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+level2 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:5.0/5.0/5.0
+level2 min/avg/max:25.0/25.0/25.0
+result=###################################################################
+****wocot:depth1/hit@1=0.903
+****wocot:depth1/hit@16=0.992
+****wocot:depth1/hit@32=0.992
+****wocot:depth1/hit@64=0.992
+****wocot:depth2/hit@1=0.818
+****wocot:depth2/hit@16=0.980
+****wocot:depth2/hit@32=0.988
+****wocot:depth2/hit@64=0.988
+****wocot:depth3/hit@1=0.684
+****wocot:depth3/hit@16=0.920
+****wocot:depth3/hit@32=0.947
+****wocot:depth3/hit@64=0.966
+****gtcot:depth1/hit@1=0.917
+****gtcot:depth1/hit@16=0.995
+****gtcot:depth1/hit@32=0.995
+****gtcot:depth1/hit@64=0.995
+****gtcot:depth2/hit@1=0.843
+****gtcot:depth2/hit@16=0.986
+****gtcot:depth2/hit@32=0.990
+****gtcot:depth2/hit@64=0.990
+****gtcot:depth3/hit@1=0.709
+****gtcot:depth3/hit@16=0.936
+****gtcot:depth3/hit@32=0.958
+****gtcot:depth3/hit@64=0.975
+[INFO] keep active_depth to 2 acc_q=0.74/0.88 balance_ratio=31.39/5.00
+[INFO] start training epoch=5 sampler info=rank=0/32, node_list=len:100/[(0, 9), (2, 2), (6, 3), (7, 4), (8, 5), (5, 5), (1, 0), (4, 5), (8, 0), (7, 6), (4, 9), (0, 1), (1, 7), (1, 9), (3, 7), (7, 2), (5, 1), (8, 3), (1, 8), (2, 1)], doc_size=[334, 314, 323, 337, 313, 329, 313, 318, 275, 265, 379, 288, 292, 297, 299, 345, 290, 286, 322, 306], pos_queries=0 multi_node_query_pool_size=281232
+[INFO] shuffle rank=0 seed=5_0 node_list=[(0, 5), (8, 8), (8, 1), (6, 8), (7, 8), (0, 3), (4, 8), (2, 6), (2, 3), (7, 1), (3, 4), (5, 6), (3, 7), (4, 5), (4, 2), (2, 5), (8, 0), (9, 9), (6, 3), (6, 4)]
+[training info] epoch=5 step=0/400 metrcis=cnt=1
+total_loss=8.32
+cot_loss=0.86
+level0/swav_loss=0.49
+level0/acc_q=0.91
+level0/acc_d=0.99
+level1/swav_loss=0.94
+level1/acc_q=0.93
+level1/acc_d=0.98
+level2/swav_loss=2.20
+level2/acc=0.74
+level2/balance_ratio=5.25
+level2/contrastive_loss=3.83
+lr=1.000e-04
+[training info] epoch=5 step=10/400 metrcis=cnt=11
+total_loss=8.18
+cot_loss=0.68
+level0/swav_loss=0.47
+level0/acc_q=0.95
+level0/acc_d=1.00
+level1/swav_loss=1.04
+level1/acc_q=0.92
+level1/acc_d=0.97
+level2/swav_loss=2.21
+level2/acc=0.78
+level2/balance_ratio=5.09
+level2/contrastive_loss=3.78
+lr=1.000e-04
+[training info] epoch=5 step=50/400 metrcis=cnt=51
+total_loss=7.94
+cot_loss=0.66
+level0/swav_loss=0.50
+level0/acc_q=0.96
+level0/acc_d=0.99
+level1/swav_loss=0.99
+level1/acc_q=0.91
+level1/acc_d=0.97
+level2/swav_loss=2.08
+level2/acc=0.81
+level2/balance_ratio=5.59
+level2/contrastive_loss=3.71
+lr=1.000e-04
+[training info] epoch=5 step=100/400 metrcis=cnt=101
+total_loss=7.96
+cot_loss=0.66
+level0/swav_loss=0.50
+level0/acc_q=0.96
+level0/acc_d=0.99
+level1/swav_loss=1.02
+level1/acc_q=0.91
+level1/acc_d=0.96
+level2/swav_loss=2.04
+level2/acc=0.81
+level2/balance_ratio=5.20
+level2/contrastive_loss=3.73
+lr=1.000e-04
+[training info] epoch=5 step=399/400 metrcis=cnt=400
+total_loss=7.72
+cot_loss=0.67
+level0/swav_loss=0.55
+level0/acc_q=0.94
+level0/acc_d=0.99
+level1/swav_loss=1.01
+level1/acc_q=0.90
+level1/acc_d=0.97
+level2/swav_loss=1.83
+level2/acc=0.81
+level2/balance_ratio=4.35
+level2/contrastive_loss=3.65
+lr=1.000e-04
+balance_ratio=2.98
+[BARRIER-PROBE][epoch5_train_end] rank=0 wait=0.44s ok
+[BARRIER-PROBE][epoch5_after_save] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch5_before_doc_balance] rank=0 wait=0.33s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[2026-10-22 16:42:39,753] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[INF] start to merge index_map, 2026-10-22 16:42:41.022698
+[INF] end of merge index_map, 2026-10-22 16:42:41.963075
+[build_index] done: 1000 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 16/76
+[BARRIER-PROBE][epoch5_after_doc_balance] rank=0 wait=0.62s ok
+[INFO] eval DEV at epoch=5 NodeBalance=level0 doc_balance=1.14(max=4380/min=3837/nodes=10)
+level1 doc_balance=1.64(max=515/min=314/nodes=100)
+level2 doc_balance=4.75(max=76/min=16/nodes=1000)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+level2 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:5.0/5.0/5.0
+level2 min/avg/max:25.0/25.0/25.0
+result=###################################################################
+****wocot:depth1/hit@1=0.907
+****wocot:depth1/hit@16=0.995
+****wocot:depth1/hit@32=0.995
+****wocot:depth1/hit@64=0.995
+****wocot:depth2/hit@1=0.825
+****wocot:depth2/hit@16=0.981
+****wocot:depth2/hit@32=0.987
+****wocot:depth2/hit@64=0.987
+****wocot:depth3/hit@1=0.718
+****wocot:depth3/hit@16=0.935
+****wocot:depth3/hit@32=0.956
+****wocot:depth3/hit@64=0.970
+****gtcot:depth1/hit@1=0.919
+****gtcot:depth1/hit@16=0.996
+****gtcot:depth1/hit@32=0.996
+****gtcot:depth1/hit@64=0.996
+****gtcot:depth2/hit@1=0.845
+****gtcot:depth2/hit@16=0.987
+****gtcot:depth2/hit@32=0.991
+****gtcot:depth2/hit@64=0.991
+****gtcot:depth3/hit@1=0.740
+****gtcot:depth3/hit@16=0.947
+****gtcot:depth3/hit@32=0.967
+****gtcot:depth3/hit@64=0.976
+[INFO] keep active_depth to 2 acc_q=0.81/0.88 balance_ratio=2.98/5.00
+[INFO] start training epoch=6 sampler info=rank=0/32, node_list=len:100/[(0, 5), (8, 8), (8, 1), (6, 8), (7, 8), (0, 3), (4, 8), (2, 6), (2, 3), (7, 1), (3, 4), (5, 6), (3, 7), (4, 5), (4, 2), (2, 5), (8, 0), (9, 9), (6, 3), (6, 4)], doc_size=[333, 297, 290, 349, 276, 282, 331, 317, 278, 276, 299, 379, 299, 318, 304, 264, 275, 294, 323, 331], pos_queries=0 multi_node_query_pool_size=281232
+[INFO] shuffle rank=0 seed=6_0 node_list=[(0, 7), (0, 8), (2, 4), (2, 3), (9, 3), (4, 4), (2, 1), (1, 6), (3, 3), (4, 0), (7, 1), (9, 5), (3, 5), (8, 9), (7, 3), (5, 1), (8, 0), (4, 1), (9, 7), (5, 8)]
+[training info] epoch=6 step=0/400 metrcis=cnt=1
+total_loss=7.03
+cot_loss=0.79
+level0/swav_loss=0.51
+level0/acc_q=0.95
+level0/acc_d=1.00
+level1/swav_loss=0.79
+level1/acc_q=0.92
+level1/acc_d=0.96
+level2/swav_loss=1.55
+level2/acc=0.85
+level2/balance_ratio=2.43
+level2/contrastive_loss=3.39
+lr=1.000e-04
+[training info] epoch=6 step=10/400 metrcis=cnt=11
+total_loss=6.95
+cot_loss=0.68
+level0/swav_loss=0.47
+level0/acc_q=0.95
+level0/acc_d=1.00
+level1/swav_loss=0.75
+level1/acc_q=0.92
+level1/acc_d=0.98
+level2/swav_loss=1.40
+level2/acc=0.85
+level2/balance_ratio=3.29
+level2/contrastive_loss=3.66
+lr=1.000e-04
+[training info] epoch=6 step=50/400 metrcis=cnt=51
+total_loss=6.93
+cot_loss=0.65
+level0/swav_loss=0.48
+level0/acc_q=0.96
+level0/acc_d=0.99
+level1/swav_loss=0.85
+level1/acc_q=0.92
+level1/acc_d=0.97
+level2/swav_loss=1.35
+level2/acc=0.86
+level2/balance_ratio=3.27
+level2/contrastive_loss=3.60
+lr=1.000e-04
+[training info] epoch=6 step=100/400 metrcis=cnt=101
+total_loss=7.04
+cot_loss=0.65
+level0/swav_loss=0.49
+level0/acc_q=0.95
+level0/acc_d=0.99
+level1/swav_loss=0.90
+level1/acc_q=0.91
+level1/acc_d=0.97
+level2/swav_loss=1.41
+level2/acc=0.85
+level2/balance_ratio=3.42
+level2/contrastive_loss=3.58
+lr=1.000e-04
+[training info] epoch=6 step=399/400 metrcis=cnt=400
+total_loss=7.03
+cot_loss=0.66
+level0/swav_loss=0.52
+level0/acc_q=0.94
+level0/acc_d=0.99
+level1/swav_loss=0.90
+level1/acc_q=0.91
+level1/acc_d=0.98
+level2/swav_loss=1.42
+level2/acc=0.84
+level2/balance_ratio=3.24
+level2/contrastive_loss=3.52
+lr=1.000e-04
+balance_ratio=2.16
+[BARRIER-PROBE][epoch6_train_end] rank=0 wait=0.55s ok
+[BARRIER-PROBE][epoch6_after_save] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch6_before_doc_balance] rank=0 wait=0.30s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-22 17:21:18.715281
+[INF] end of merge index_map, 2026-10-22 17:21:20.322109
+[build_index] done: 1000 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 18/74
+[BARRIER-PROBE][epoch6_after_doc_balance] rank=0 wait=0.44s ok
+[INFO] eval DEV at epoch=6 NodeBalance=level0 doc_balance=1.16(max=4420/min=3802/nodes=10)
+level1 doc_balance=1.70(max=527/min=310/nodes=100)
+level2 doc_balance=4.11(max=74/min=18/nodes=1000)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+level2 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:5.0/5.0/5.0
+level2 min/avg/max:25.0/25.0/25.0
+result=###################################################################
+****wocot:depth1/hit@1=0.909
+****wocot:depth1/hit@16=0.995
+****wocot:depth1/hit@32=0.995
+****wocot:depth1/hit@64=0.995
+****wocot:depth2/hit@1=0.828
+****wocot:depth2/hit@16=0.983
+****wocot:depth2/hit@32=0.989
+****wocot:depth2/hit@64=0.989
+****wocot:depth3/hit@1=0.731
+****wocot:depth3/hit@16=0.935
+****wocot:depth3/hit@32=0.955
+****wocot:depth3/hit@64=0.971
+****gtcot:depth1/hit@1=0.922
+****gtcot:depth1/hit@16=0.997
+****gtcot:depth1/hit@32=0.997
+****gtcot:depth1/hit@64=0.997
+****gtcot:depth2/hit@1=0.847
+****gtcot:depth2/hit@16=0.988
+****gtcot:depth2/hit@32=0.992
+****gtcot:depth2/hit@64=0.992
+****gtcot:depth3/hit@1=0.749
+****gtcot:depth3/hit@16=0.951
+****gtcot:depth3/hit@32=0.966
+****gtcot:depth3/hit@64=0.978
+[INFO] keep active_depth to 2 acc_q=0.84/0.88 balance_ratio=2.16/5.00
+[INFO] start training epoch=7 sampler info=rank=0/32, node_list=len:100/[(0, 7), (0, 8), (2, 4), (2, 3), (9, 3), (4, 4), (2, 1), (1, 6), (3, 3), (4, 0), (7, 1), (9, 5), (3, 5), (8, 9), (7, 3), (5, 1), (8, 0), (4, 1), (9, 7), (5, 8)], doc_size=[247, 309, 310, 278, 304, 343, 306, 331, 314, 287, 276, 278, 323, 301, 330, 290, 275, 351, 346, 349], pos_queries=0 multi_node_query_pool_size=281232
+[INFO] shuffle rank=0 seed=7_0 node_list=[(4, 0), (8, 1), (1, 8), (8, 8), (0, 9), (8, 7), (7, 5), (7, 6), (5, 4), (7, 4), (3, 0), (5, 3), (0, 5), (9, 8), (4, 2), (1, 2), (8, 0), (8, 9), (7, 8), (7, 7)]
+[training info] epoch=7 step=0/400 metrcis=cnt=1
+total_loss=6.68
+cot_loss=0.70
+level0/swav_loss=0.17
+level0/acc_q=0.98
+level0/acc_d=1.00
+level1/swav_loss=0.49
+level1/acc_q=0.95
+level1/acc_d=0.99
+level2/swav_loss=1.75
+level2/acc=0.80
+level2/balance_ratio=4.80
+level2/contrastive_loss=3.57
+lr=1.000e-04
+[training info] epoch=7 step=10/400 metrcis=cnt=11
+total_loss=6.41
+cot_loss=0.62
+level0/swav_loss=0.36
+level0/acc_q=0.97
+level0/acc_d=1.00
+level1/swav_loss=0.75
+level1/acc_q=0.93
+level1/acc_d=0.99
+level2/swav_loss=1.14
+level2/acc=0.88
+level2/balance_ratio=2.88
+level2/contrastive_loss=3.54
+lr=1.000e-04
+[training info] epoch=7 step=50/400 metrcis=cnt=51
+total_loss=6.57
+cot_loss=0.63
+level0/swav_loss=0.44
+level0/acc_q=0.96
+level0/acc_d=0.99
+level1/swav_loss=0.86
+level1/acc_q=0.93
+level1/acc_d=0.98
+level2/swav_loss=1.12
+level2/acc=0.88
+level2/balance_ratio=3.06
+level2/contrastive_loss=3.51
+lr=1.000e-04
+[training info] epoch=7 step=100/400 metrcis=cnt=101
+total_loss=6.64
+cot_loss=0.65
+level0/swav_loss=0.48
+level0/acc_q=0.96
+level0/acc_d=0.99
+level1/swav_loss=0.82
+level1/acc_q=0.93
+level1/acc_d=0.98
+level2/swav_loss=1.15
+level2/acc=0.88
+level2/balance_ratio=3.08
+level2/contrastive_loss=3.53
+lr=1.000e-04
+[2026-10-22 17:42:43,353] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[training info] epoch=7 step=399/400 metrcis=cnt=400
+total_loss=6.66
+cot_loss=0.66
+level0/swav_loss=0.50
+level0/acc_q=0.95
+level0/acc_d=0.99
+level1/swav_loss=0.82
+level1/acc_q=0.92
+level1/acc_d=0.98
+level2/swav_loss=1.22
+level2/acc=0.86
+level2/balance_ratio=3.00
+level2/contrastive_loss=3.47
+lr=1.000e-04
+balance_ratio=2.12
+[BARRIER-PROBE][epoch7_train_end] rank=0 wait=0.56s ok
+[BARRIER-PROBE][epoch7_after_save] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch7_before_doc_balance] rank=0 wait=0.06s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-22 17:59:55.017966
+[INF] end of merge index_map, 2026-10-22 18:00:03.388676
+[build_index] done: 1000 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 17/66
+[BARRIER-PROBE][epoch7_after_doc_balance] rank=0 wait=0.64s ok
+[INFO] eval DEV at epoch=7 NodeBalance=level0 doc_balance=1.15(max=4382/min=3827/nodes=10)
+level1 doc_balance=1.55(max=501/min=323/nodes=100)
+level2 doc_balance=3.88(max=66/min=17/nodes=1000)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+level2 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:5.0/5.0/5.0
+level2 min/avg/max:25.0/25.0/25.0
+result=###################################################################
+****wocot:depth1/hit@1=0.911
+****wocot:depth1/hit@16=0.995
+****wocot:depth1/hit@32=0.995
+****wocot:depth1/hit@64=0.995
+****wocot:depth2/hit@1=0.834
+****wocot:depth2/hit@16=0.982
+****wocot:depth2/hit@32=0.988
+****wocot:depth2/hit@64=0.988
+****wocot:depth3/hit@1=0.732
+****wocot:depth3/hit@16=0.937
+****wocot:depth3/hit@32=0.959
+****wocot:depth3/hit@64=0.973
+****gtcot:depth1/hit@1=0.923
+****gtcot:depth1/hit@16=0.996
+****gtcot:depth1/hit@32=0.996
+****gtcot:depth1/hit@64=0.996
+****gtcot:depth2/hit@1=0.852
+****gtcot:depth2/hit@16=0.986
+****gtcot:depth2/hit@32=0.992
+****gtcot:depth2/hit@64=0.992
+****gtcot:depth3/hit@1=0.759
+****gtcot:depth3/hit@16=0.950
+****gtcot:depth3/hit@32=0.967
+****gtcot:depth3/hit@64=0.979
+[INFO] keep active_depth to 2 acc_q=0.87/0.88 balance_ratio=2.12/5.00
+[INFO] start training epoch=8 sampler info=rank=0/32, node_list=len:100/[(4, 0), (8, 1), (1, 8), (8, 8), (0, 9), (8, 7), (7, 5), (7, 6), (5, 4), (7, 4), (3, 0), (5, 3), (0, 5), (9, 8), (4, 2), (1, 2), (8, 0), (8, 9), (7, 8), (7, 7)], doc_size=[287, 290, 322, 297, 334, 331, 243, 265, 327, 337, 291, 364, 333, 340, 304, 315, 275, 301, 276, 317], pos_queries=0 multi_node_query_pool_size=281232
+[INFO] shuffle rank=0 seed=8_0 node_list=[(1, 0), (8, 8), (7, 5), (6, 2), (0, 1), (6, 0), (9, 2), (5, 2), (2, 0), (3, 7), (8, 0), (8, 9), (1, 1), (0, 5), (2, 8), (9, 9), (2, 5), (4, 2), (9, 0), (7, 8)]
+[training info] epoch=8 step=0/400 metrcis=cnt=1
+total_loss=5.79
+cot_loss=0.59
+level0/swav_loss=0.48
+level0/acc_q=0.95
+level0/acc_d=1.00
+level1/swav_loss=0.41
+level1/acc_q=0.98
+level1/acc_d=1.00
+level2/swav_loss=1.27
+level2/acc=0.85
+level2/balance_ratio=2.00
+level2/contrastive_loss=3.04
+lr=1.000e-04
+[training info] epoch=8 step=10/400 metrcis=cnt=11
+total_loss=6.05
+cot_loss=0.63
+level0/swav_loss=0.38
+level0/acc_q=0.97
+level0/acc_d=1.00
+level1/swav_loss=0.60
+level1/acc_q=0.96
+level1/acc_d=0.99
+level2/swav_loss=1.02
+level2/acc=0.89
+level2/balance_ratio=2.69
+level2/contrastive_loss=3.42
+lr=1.000e-04
+[training info] epoch=8 step=50/400 metrcis=cnt=51
+total_loss=6.20
+cot_loss=0.64
+level0/swav_loss=0.48
+level0/acc_q=0.96
+level0/acc_d=1.00
+level1/swav_loss=0.67
+level1/acc_q=0.94
+level1/acc_d=0.99
+level2/swav_loss=0.98
+level2/acc=0.90
+level2/balance_ratio=2.94
+level2/contrastive_loss=3.43
+lr=1.000e-04
+[training info] epoch=8 step=100/400 metrcis=cnt=101
+total_loss=6.24
+cot_loss=0.64
+level0/swav_loss=0.46
+level0/acc_q=0.96
+level0/acc_d=1.00
+level1/swav_loss=0.72
+level1/acc_q=0.93
+level1/acc_d=0.99
+level2/swav_loss=0.97
+level2/acc=0.90
+level2/balance_ratio=2.85
+level2/contrastive_loss=3.45
+lr=1.000e-04
+[training info] epoch=8 step=399/400 metrcis=cnt=400
+total_loss=6.33
+cot_loss=0.65
+level0/swav_loss=0.48
+level0/acc_q=0.95
+level0/acc_d=0.99
+level1/swav_loss=0.76
+level1/acc_q=0.92
+level1/acc_d=0.99
+level2/swav_loss=1.06
+level2/acc=0.88
+level2/balance_ratio=2.93
+level2/contrastive_loss=3.39
+lr=1.000e-04
+balance_ratio=1.98
+[BARRIER-PROBE][epoch8_train_end] rank=0 wait=0.50s ok
+[BARRIER-PROBE][epoch8_after_save] rank=0 wait=0.00s ok
+[BARRIER-PROBE][epoch8_before_doc_balance] rank=0 wait=0.18s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-22 18:38:38.515473
+[INF] end of merge index_map, 2026-10-22 18:38:42.192956
+[build_index] done: 1000 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 21/65
+[BARRIER-PROBE][epoch8_after_doc_balance] rank=0 wait=0.65s ok
+[2026-10-22 18:42:46,953] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[INFO] eval DEV at epoch=8 NodeBalance=level0 doc_balance=1.15(max=4370/min=3814/nodes=10)
+level1 doc_balance=1.65(max=522/min=316/nodes=100)
+level2 doc_balance=3.10(max=65/min=21/nodes=1000)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+level2 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:5.0/5.0/5.0
+level2 min/avg/max:25.0/25.0/25.0
+result=###################################################################
+****wocot:depth1/hit@1=0.910
+****wocot:depth1/hit@16=0.996
+****wocot:depth1/hit@32=0.996
+****wocot:depth1/hit@64=0.996
+****wocot:depth2/hit@1=0.827
+****wocot:depth2/hit@16=0.985
+****wocot:depth2/hit@32=0.990
+****wocot:depth2/hit@64=0.990
+****wocot:depth3/hit@1=0.732
+****wocot:depth3/hit@16=0.941
+****wocot:depth3/hit@32=0.960
+****wocot:depth3/hit@64=0.975
+****gtcot:depth1/hit@1=0.920
+****gtcot:depth1/hit@16=0.997
+****gtcot:depth1/hit@32=0.997
+****gtcot:depth1/hit@64=0.997
+****gtcot:depth2/hit@1=0.846
+****gtcot:depth2/hit@16=0.989
+****gtcot:depth2/hit@32=0.992
+****gtcot:depth2/hit@64=0.992
+****gtcot:depth3/hit@1=0.756
+****gtcot:depth3/hit@16=0.955
+****gtcot:depth3/hit@32=0.969
+****gtcot:depth3/hit@64=0.980
+[INFO] increase active_depth from 2 to 3 acc_q=0.88/0.88 balance_ratio=1.98/5.00
+[INFO] expanded DocBeamCache docs=31248
+[INFO] leaf reached at epoch=9 global_step=3110; starting cosine lr decay: 0.0001 -> 1e-06 over 10 epochs (20000 steps)
+[INFO] start training epoch=9 sampler info=rank=0/32, node_list=len:1000/[(0, 0, 0), (0, 0, 1), (0, 0, 2), (0, 0, 3), (0, 0, 4), (0, 0, 5), (0, 0, 6), (0, 0, 7), (0, 0, 8), (0, 0, 9), (0, 1, 0), (0, 1, 1), (0, 1, 2), (0, 1, 3), (0, 1, 4), (0, 1, 5), (0, 1, 6), (0, 1, 7), (0, 1, 8), (0, 1, 9)], doc_size=[57, 64, 69, 53, 60, 52, 59, 60, 56, 57, 68, 59, 57, 64, 62, 57, 64, 50, 58, 58], pos_queries=562464 multi_node_query_pool_size=562464
+[INFO] shuffle rank=0 seed=9_0 node_list=[(6, 6, 5), (8, 9, 8), (0, 5, 3), (2, 4, 9), (3, 6, 9), (3, 0, 4), (7, 8, 8), (4, 7, 7), (9, 1, 2), (3, 9, 7), (4, 1, 6), (1, 5, 4), (0, 2, 1), (9, 2, 3), (4, 1, 0), (3, 7, 2), (1, 6, 4), (1, 7, 5), (4, 1, 2), (9, 7, 4)]
+[INFO] precomputed leaf batches epoch=9 num_batches=2000 num_samples=256000 pool_cache_size=0 elapsed=7.49s
+[training info] epoch=9 step=0/2000 metrcis=cnt=1
+total_loss=3.40
+cot_loss=0.61
+level0/swav_loss=0.01
+level0/acc_q=0.95
+level0/acc_d=0.99
+level1/swav_loss=0.01
+level1/acc_q=0.94
+level1/acc_d=1.00
+level2/swav_loss=0.02
+level2/acc_q=0.90
+level2/acc_d=1.00
+level3/contrastive_loss=2.76
+lr=1.000e-04
+[training info] epoch=9 step=10/2000 metrcis=cnt=10
+total_loss=2.80
+cot_loss=0.71
+level0/swav_loss=0.01
+level0/acc_q=0.92
+level0/acc_d=0.99
+level1/swav_loss=0.01
+level1/acc_q=0.87
+level1/acc_d=0.97
+level2/swav_loss=0.02
+level2/acc_q=0.79
+level2/acc_d=0.95
+level3/contrastive_loss=2.05
+lr=1.000e-04
+[training info] epoch=9 step=50/2000 metrcis=cnt=40
+total_loss=2.12
+cot_loss=0.74
+level0/swav_loss=0.01
+level0/acc_q=0.91
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.86
+level1/acc_d=0.97
+level2/swav_loss=0.02
+level2/acc_q=0.77
+level2/acc_d=0.89
+level3/contrastive_loss=1.34
+lr=1.000e-04
+[training info] epoch=9 step=100/2000 metrcis=cnt=50
+total_loss=1.87
+cot_loss=0.72
+level0/swav_loss=0.01
+level0/acc_q=0.93
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.88
+level1/acc_d=0.98
+level2/swav_loss=0.02
+level2/acc_q=0.79
+level2/acc_d=0.91
+level3/contrastive_loss=1.11
+lr=9.999e-05
+[2026-10-22 19:42:50,553] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[2026-10-22 20:42:54,153] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[training info] epoch=9 step=1000/2000 metrcis=cnt=900
+total_loss=1.57
+cot_loss=0.67
+level0/swav_loss=0.01
+level0/acc_q=0.93
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.88
+level1/acc_d=0.98
+level2/swav_loss=0.02
+level2/acc_q=0.78
+level2/acc_d=0.89
+level3/contrastive_loss=0.87
+lr=9.939e-05
+[BARRIER-PROBE][train_ep9_step1000] rank=0 wait=0.00s ok
+[2026-10-22 21:42:57,753] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[2026-10-22 22:43:01,353] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[2026-10-22 23:43:04,953] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[training info] epoch=9 step=1999/2000 metrcis=cnt=1899
+total_loss=1.48
+cot_loss=0.63
+level0/swav_loss=0.01
+level0/acc_q=0.93
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.88
+level1/acc_d=0.98
+level2/swav_loss=0.02
+level2/acc_q=0.78
+level2/acc_d=0.90
+level3/contrastive_loss=0.82
+lr=9.758e-05
+[BARRIER-PROBE][epoch9_train_end] rank=0 wait=0.01s ok
+[BARRIER-PROBE][epoch9_after_save] rank=0 wait=0.00s ok
+[INFO] start benchmark at epoch=9
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-22 23:58:35.248386
+[INF] end of merge index_map, 2026-10-22 23:58:41.557767
+[build_index] done: 1000 leaf nodes (this rank), 1000000 total doc-node entries, 1000000 unique docs min/max docs: 544/1615
+[INFO] index saved to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep009/index.pt
+[INFO] index_info (this rank) = 1000/1000=1.00 leaf nodes, docs_of_node min/max/avg=544/1615/1000.00
+[INFO] index_info (global)    = 32000/1000=32.00 leaf nodes, docs_of_node min/max/avg=544/1615/1000.00
+[INF] load corpus size=7438 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/dev.jsonl vl_mode=False query_side=False
+[METRICS] hit@1=0.4630  hit@10=0.8319  hit@100=0.9501  mrr@10=0.5867  mrr@100=0.5923  leaf_hit=0.9693  leaf_mrr=0.8281  leaf_hit@1=0.7621  leaf_hit@11=0.9406  leaf_hit@22=0.9602  leaf_hit@32=0.9693  total=7456
+[INFO] min/mean/max candidate_docs=28657/32324.8/35574 min/mean/max uniq_candidate_docs=28657/32324.8/35574 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep009/bench_result_gt_cot_part0.jsonl
+[METRICS] hit@1=0.4531  hit@10=0.8191  hit@100=0.9398  mrr@10=0.5758  mrr@100=0.5817  leaf_hit=0.9612  leaf_mrr=0.8075  leaf_hit@1=0.7358  leaf_hit@11=0.9329  leaf_hit@22=0.9529  leaf_hit@32=0.9612  total=7456
+[INFO] min/mean/max candidate_docs=29138/32353.6/35722 min/mean/max uniq_candidate_docs=29138/32353.6/35722 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep009/bench_result_selfcot_0_part0.jsonl
+[METRICS] hit@1=0.4512  hit@10=0.8222  hit@100=0.9417  mrr@10=0.5751  mrr@100=0.5808  leaf_hit=0.9628  leaf_mrr=0.8088  leaf_hit@1=0.7366  leaf_hit@11=0.9348  leaf_hit@22=0.9548  leaf_hit@32=0.9628  total=7456
+[INFO] min/mean/max candidate_docs=28876/32350.0/35636 min/mean/max uniq_candidate_docs=28876/32350.0/35636 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep009/bench_result_selfcot_8_part0.jsonl
+[METRICS] hit@1=0.4571  hit@10=0.8258  hit@100=0.9439  mrr@10=0.5804  mrr@100=0.5860  leaf_hit=0.9646  leaf_mrr=0.8156  leaf_hit@1=0.7464  leaf_hit@11=0.9344  leaf_hit@22=0.9560  leaf_hit@32=0.9646  total=7456
+[INFO] min/mean/max candidate_docs=28570/32343.8/35823 min/mean/max uniq_candidate_docs=28570/32343.8/35823 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep009/bench_result_selfcot_16_part0.jsonl
+[METRICS] hit@1=0.4556  hit@10=0.8256  hit@100=0.9435  mrr@10=0.5795  mrr@100=0.5852  leaf_hit=0.9647  leaf_mrr=0.8180  leaf_hit@1=0.7492  leaf_hit@11=0.9344  leaf_hit@22=0.9556  leaf_hit@32=0.9647  total=7456
+[INFO] min/mean/max candidate_docs=28324/32348.8/35958 min/mean/max uniq_candidate_docs=28324/32348.8/35958 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep009/bench_result_selfcot_32_part0.jsonl
+[METRICS] hit@1=0.4561  hit@10=0.8244  hit@100=0.9439  mrr@10=0.5794  mrr@100=0.5852  leaf_hit=0.9646  leaf_mrr=0.8213  leaf_hit@1=0.7543  leaf_hit@11=0.9352  leaf_hit@22=0.9557  leaf_hit@32=0.9646  total=7456
+[INFO] min/mean/max candidate_docs=28737/32340.2/35964 min/mean/max uniq_candidate_docs=28737/32340.2/35964 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep009/bench_result_selfcot_64_part0.jsonl
+[METRICS] hit@1=0.4573  hit@10=0.8251  hit@100=0.9453  mrr@10=0.5807  mrr@100=0.5865  leaf_hit=0.9657  leaf_mrr=0.8205  leaf_hit@1=0.7525  leaf_hit@11=0.9370  leaf_hit@22=0.9565  leaf_hit@32=0.9657  total=7456
+[INFO] min/mean/max candidate_docs=28227/32336.2/35955 min/mean/max uniq_candidate_docs=28227/32336.2/35955 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep009/bench_result_selfcot_80_part0.jsonl
+[INFO] benchmark gt_cot epoch=9 samples=7456 hit@1=0.4630 hit@10=0.8319 hit@100=0.9501 mrr@10=0.5867 mrr@100=0.5923 leaf_hit=0.9693 leaf_mrr=0.8281 leaf_hit@1=0.7621 leaf_hit@11=0.9406 leaf_hit@22=0.9602 leaf_hit@32=0.9693
+[INFO] benchmark selfcot_0 epoch=9 samples=7456 hit@1=0.4531 hit@10=0.8191 hit@100=0.9398 mrr@10=0.5758 mrr@100=0.5817 leaf_hit=0.9612 leaf_mrr=0.8075 leaf_hit@1=0.7358 leaf_hit@11=0.9329 leaf_hit@22=0.9529 leaf_hit@32=0.9612
+[INFO] benchmark selfcot_8 epoch=9 samples=7456 hit@1=0.4512 hit@10=0.8222 hit@100=0.9417 mrr@10=0.5751 mrr@100=0.5808 leaf_hit=0.9628 leaf_mrr=0.8088 leaf_hit@1=0.7366 leaf_hit@11=0.9348 leaf_hit@22=0.9548 leaf_hit@32=0.9628
+[INFO] benchmark selfcot_16 epoch=9 samples=7456 hit@1=0.4571 hit@10=0.8258 hit@100=0.9439 mrr@10=0.5804 mrr@100=0.5860 leaf_hit=0.9646 leaf_mrr=0.8156 leaf_hit@1=0.7464 leaf_hit@11=0.9344 leaf_hit@22=0.9560 leaf_hit@32=0.9646
+[INFO] benchmark selfcot_32 epoch=9 samples=7456 hit@1=0.4556 hit@10=0.8256 hit@100=0.9435 mrr@10=0.5795 mrr@100=0.5852 leaf_hit=0.9647 leaf_mrr=0.8180 leaf_hit@1=0.7492 leaf_hit@11=0.9344 leaf_hit@22=0.9556 leaf_hit@32=0.9647
+[INFO] benchmark selfcot_64 epoch=9 samples=7456 hit@1=0.4561 hit@10=0.8244 hit@100=0.9439 mrr@10=0.5794 mrr@100=0.5852 leaf_hit=0.9646 leaf_mrr=0.8213 leaf_hit@1=0.7543 leaf_hit@11=0.9352 leaf_hit@22=0.9557 leaf_hit@32=0.9646
+[INFO] benchmark selfcot_80 epoch=9 samples=7456 hit@1=0.4573 hit@10=0.8251 hit@100=0.9453 mrr@10=0.5807 mrr@100=0.5865 leaf_hit=0.9657 leaf_mrr=0.8205 leaf_hit@1=0.7525 leaf_hit@11=0.9370 leaf_hit@22=0.9565 leaf_hit@32=0.9657
+[INFO] benchmark NodeBalance epoch=9
+level1 doc_balance=1.46(max=11841/min=8098/nodes=100)
+level2 doc_balance=2.97(max=1615/min=544/nodes=1000)
+[BARRIER-PROBE][epoch9_before_doc_balance] rank=0 wait=0.43s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-23 00:04:56.783840
+[INF] end of merge index_map, 2026-10-23 00:05:03.086957
+[build_index] done: 1000 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 20/70
+[BARRIER-PROBE][epoch9_after_doc_balance] rank=0 wait=0.44s ok
+[INFO] eval DEV at epoch=9 NodeBalance=level0 doc_balance=1.14(max=4359/min=3821/nodes=10)
+level1 doc_balance=1.61(max=514/min=320/nodes=100)
+level2 doc_balance=3.50(max=70/min=20/nodes=1000)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+level2 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:5.0/5.0/5.0
+level2 min/avg/max:25.0/25.0/25.0
+result=###################################################################
+****wocot:depth1/hit@1=0.919
+****wocot:depth1/hit@16=0.997
+****wocot:depth1/hit@32=0.997
+****wocot:depth1/hit@64=0.997
+****wocot:depth2/hit@1=0.846
+****wocot:depth2/hit@16=0.989
+****wocot:depth2/hit@32=0.993
+****wocot:depth2/hit@64=0.993
+****wocot:depth3/hit@1=0.752
+****wocot:depth3/hit@16=0.950
+****wocot:depth3/hit@32=0.966
+****wocot:depth3/hit@64=0.979
+****gtcot:depth1/hit@1=0.920
+****gtcot:depth1/hit@16=0.997
+****gtcot:depth1/hit@32=0.997
+****gtcot:depth1/hit@64=0.997
+****gtcot:depth2/hit@1=0.849
+****gtcot:depth2/hit@16=0.990
+****gtcot:depth2/hit@32=0.994
+****gtcot:depth2/hit@64=0.994
+****gtcot:depth3/hit@1=0.762
+****gtcot:depth3/hit@16=0.953
+****gtcot:depth3/hit@32=0.970
+****gtcot:depth3/hit@64=0.981
+[INFO] keep active_depth=3 (already at tree_depth=3)
+[INFO] start training epoch=10 sampler info=rank=0/32, node_list=len:1000/[(6, 6, 5), (8, 9, 8), (0, 5, 3), (2, 4, 9), (3, 6, 9), (3, 0, 4), (7, 8, 8), (4, 7, 7), (9, 1, 2), (3, 9, 7), (4, 1, 6), (1, 5, 4), (0, 2, 1), (9, 2, 3), (4, 1, 0), (3, 7, 2), (1, 6, 4), (1, 7, 5), (4, 1, 2), (9, 7, 4)], doc_size=[60, 65, 55, 68, 58, 63, 61, 62, 51, 81, 63, 67, 54, 43, 59, 49, 74, 67, 73, 65], pos_queries=562464 multi_node_query_pool_size=562464
+[INFO] shuffle rank=0 seed=10_0 node_list=[(9, 1, 4), (7, 6, 7), (4, 7, 5), (2, 6, 6), (1, 3, 8), (6, 6, 5), (7, 8, 2), (6, 7, 0), (2, 4, 3), (1, 2, 0), (2, 8, 6), (4, 6, 9), (8, 0, 6), (1, 9, 5), (9, 0, 8), (1, 6, 2), (0, 1, 5), (9, 0, 9), (3, 5, 9), (1, 8, 5)]
+[INFO] precomputed leaf batches epoch=10 num_batches=2000 num_samples=256000 pool_cache_size=0 elapsed=7.89s
+[training info] epoch=10 step=0/2000 metrcis=cnt=1
+total_loss=1.75
+cot_loss=0.53
+level0/swav_loss=0.00
+level0/acc_q=0.95
+level0/acc_d=1.00
+level1/swav_loss=0.00
+level1/acc_q=0.95
+level1/acc_d=1.00
+level2/swav_loss=0.01
+level2/acc_q=0.89
+level2/acc_d=0.95
+level3/contrastive_loss=1.20
+lr=9.758e-05
+[training info] epoch=10 step=10/2000 metrcis=cnt=10
+total_loss=1.27
+cot_loss=0.54
+level0/swav_loss=0.01
+level0/acc_q=0.92
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.89
+level1/acc_d=0.97
+level2/swav_loss=0.02
+level2/acc_q=0.81
+level2/acc_d=0.90
+level3/contrastive_loss=0.70
+lr=9.755e-05
+[training info] epoch=10 step=50/2000 metrcis=cnt=40
+total_loss=1.36
+cot_loss=0.55
+level0/swav_loss=0.01
+level0/acc_q=0.93
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.89
+level1/acc_d=0.99
+level2/swav_loss=0.02
+level2/acc_q=0.78
+level2/acc_d=0.92
+level3/contrastive_loss=0.78
+lr=9.746e-05
+[training info] epoch=10 step=100/2000 metrcis=cnt=50
+total_loss=1.36
+cot_loss=0.56
+level0/swav_loss=0.00
+level0/acc_q=0.93
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.89
+level1/acc_d=0.98
+level2/swav_loss=0.02
+level2/acc_q=0.79
+level2/acc_d=0.91
+level3/contrastive_loss=0.78
+lr=9.733e-05
+[2026-10-23 00:43:08,553] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[2026-10-23 01:43:12,153] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[training info] epoch=10 step=1000/2000 metrcis=cnt=900
+total_loss=1.31
+cot_loss=0.55
+level0/swav_loss=0.00
+level0/acc_q=0.93
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.88
+level1/acc_d=0.98
+level2/swav_loss=0.02
+level2/acc_q=0.79
+level2/acc_d=0.92
+level3/contrastive_loss=0.73
+lr=9.460e-05
+[BARRIER-PROBE][train_ep10_step1000] rank=0 wait=0.00s ok
+[2026-10-23 02:43:15,753] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[2026-10-23 03:43:19,353] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[2026-10-23 04:43:22,953] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[training info] epoch=10 step=1999/2000 metrcis=cnt=1899
+total_loss=1.28
+cot_loss=0.53
+level0/swav_loss=0.00
+level0/acc_q=0.93
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.88
+level1/acc_d=0.98
+level2/swav_loss=0.02
+level2/acc_q=0.80
+level2/acc_d=0.93
+level3/contrastive_loss=0.72
+lr=9.055e-05
+[BARRIER-PROBE][epoch10_train_end] rank=0 wait=0.01s ok
+[BARRIER-PROBE][epoch10_after_save] rank=0 wait=0.00s ok
+[INFO] start benchmark at epoch=10
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-23 05:06:09.752934
+[INF] end of merge index_map, 2026-10-23 05:06:15.501008
+[build_index] done: 1000 leaf nodes (this rank), 1000000 total doc-node entries, 1000000 unique docs min/max docs: 664/1393
+[INFO] index saved to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep010/index.pt
+[INFO] index_info (this rank) = 1000/1000=1.00 leaf nodes, docs_of_node min/max/avg=664/1393/1000.00
+[INFO] index_info (global)    = 32000/1000=32.00 leaf nodes, docs_of_node min/max/avg=664/1393/1000.00
+[INF] load corpus size=7438 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/dev.jsonl vl_mode=False query_side=False
+[METRICS] hit@1=0.4689  hit@10=0.8341  hit@100=0.9513  mrr@10=0.5926  mrr@100=0.5982  leaf_hit=0.9694  leaf_mrr=0.8285  leaf_hit@1=0.7605  leaf_hit@11=0.9437  leaf_hit@22=0.9626  leaf_hit@32=0.9694  total=7456
+[INFO] min/mean/max candidate_docs=28874/32275.6/35623 min/mean/max uniq_candidate_docs=28874/32275.6/35623 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep010/bench_result_gt_cot_part0.jsonl
+[METRICS] hit@1=0.4552  hit@10=0.8234  hit@100=0.9441  mrr@10=0.5798  mrr@100=0.5857  leaf_hit=0.9643  leaf_mrr=0.8114  leaf_hit@1=0.7382  leaf_hit@11=0.9352  leaf_hit@22=0.9557  leaf_hit@32=0.9643  total=7456
+[INFO] min/mean/max candidate_docs=29003/32290.8/35734 min/mean/max uniq_candidate_docs=29003/32290.8/35734 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep010/bench_result_selfcot_0_part0.jsonl
+[METRICS] hit@1=0.4594  hit@10=0.8247  hit@100=0.9455  mrr@10=0.5820  mrr@100=0.5878  leaf_hit=0.9653  leaf_mrr=0.8132  leaf_hit@1=0.7407  leaf_hit@11=0.9358  leaf_hit@22=0.9567  leaf_hit@32=0.9653  total=7456
+[INFO] min/mean/max candidate_docs=29003/32288.5/35970 min/mean/max uniq_candidate_docs=29003/32288.5/35970 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep010/bench_result_selfcot_8_part0.jsonl
+[METRICS] hit@1=0.4666  hit@10=0.8266  hit@100=0.9455  mrr@10=0.5875  mrr@100=0.5933  leaf_hit=0.9665  leaf_mrr=0.8194  leaf_hit@1=0.7499  leaf_hit@11=0.9382  leaf_hit@22=0.9584  leaf_hit@32=0.9665  total=7456
+[INFO] min/mean/max candidate_docs=28827/32304.4/35740 min/mean/max uniq_candidate_docs=28827/32304.4/35740 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep010/bench_result_selfcot_16_part0.jsonl
+[METRICS] hit@1=0.4646  hit@10=0.8291  hit@100=0.9464  mrr@10=0.5877  mrr@100=0.5933  leaf_hit=0.9661  leaf_mrr=0.8220  leaf_hit@1=0.7540  leaf_hit@11=0.9382  leaf_hit@22=0.9579  leaf_hit@32=0.9661  total=7456
+[INFO] min/mean/max candidate_docs=29087/32287.6/35892 min/mean/max uniq_candidate_docs=29087/32287.6/35892 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep010/bench_result_selfcot_32_part0.jsonl
+[METRICS] hit@1=0.4663  hit@10=0.8307  hit@100=0.9477  mrr@10=0.5890  mrr@100=0.5946  leaf_hit=0.9663  leaf_mrr=0.8229  leaf_hit@1=0.7547  leaf_hit@11=0.9394  leaf_hit@22=0.9588  leaf_hit@32=0.9663  total=7456
+[INFO] min/mean/max candidate_docs=28918/32284.7/35641 min/mean/max uniq_candidate_docs=28918/32284.7/35641 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep010/bench_result_selfcot_64_part0.jsonl
+[METRICS] hit@1=0.4633  hit@10=0.8282  hit@100=0.9466  mrr@10=0.5872  mrr@100=0.5929  leaf_hit=0.9662  leaf_mrr=0.8229  leaf_hit@1=0.7544  leaf_hit@11=0.9407  leaf_hit@22=0.9588  leaf_hit@32=0.9662  total=7456
+[INFO] min/mean/max candidate_docs=28874/32311.6/35892 min/mean/max uniq_candidate_docs=28874/32311.6/35892 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep010/bench_result_selfcot_80_part0.jsonl
+[INFO] benchmark gt_cot epoch=10 samples=7456 hit@1=0.4689 hit@10=0.8341 hit@100=0.9513 mrr@10=0.5926 mrr@100=0.5982 leaf_hit=0.9694 leaf_mrr=0.8285 leaf_hit@1=0.7605 leaf_hit@11=0.9437 leaf_hit@22=0.9626 leaf_hit@32=0.9694
+[INFO] benchmark selfcot_0 epoch=10 samples=7456 hit@1=0.4552 hit@10=0.8234 hit@100=0.9441 mrr@10=0.5798 mrr@100=0.5857 leaf_hit=0.9643 leaf_mrr=0.8114 leaf_hit@1=0.7382 leaf_hit@11=0.9352 leaf_hit@22=0.9557 leaf_hit@32=0.9643
+[INFO] benchmark selfcot_8 epoch=10 samples=7456 hit@1=0.4594 hit@10=0.8247 hit@100=0.9455 mrr@10=0.5820 mrr@100=0.5878 leaf_hit=0.9653 leaf_mrr=0.8132 leaf_hit@1=0.7407 leaf_hit@11=0.9358 leaf_hit@22=0.9567 leaf_hit@32=0.9653
+[INFO] benchmark selfcot_16 epoch=10 samples=7456 hit@1=0.4666 hit@10=0.8266 hit@100=0.9455 mrr@10=0.5875 mrr@100=0.5933 leaf_hit=0.9665 leaf_mrr=0.8194 leaf_hit@1=0.7499 leaf_hit@11=0.9382 leaf_hit@22=0.9584 leaf_hit@32=0.9665
+[INFO] benchmark selfcot_32 epoch=10 samples=7456 hit@1=0.4646 hit@10=0.8291 hit@100=0.9464 mrr@10=0.5877 mrr@100=0.5933 leaf_hit=0.9661 leaf_mrr=0.8220 leaf_hit@1=0.7540 leaf_hit@11=0.9382 leaf_hit@22=0.9579 leaf_hit@32=0.9661
+[INFO] benchmark selfcot_64 epoch=10 samples=7456 hit@1=0.4663 hit@10=0.8307 hit@100=0.9477 mrr@10=0.5890 mrr@100=0.5946 leaf_hit=0.9663 leaf_mrr=0.8229 leaf_hit@1=0.7547 leaf_hit@11=0.9394 leaf_hit@22=0.9588 leaf_hit@32=0.9663
+[INFO] benchmark selfcot_80 epoch=10 samples=7456 hit@1=0.4633 hit@10=0.8282 hit@100=0.9466 mrr@10=0.5872 mrr@100=0.5929 leaf_hit=0.9662 leaf_mrr=0.8229 leaf_hit@1=0.7544 leaf_hit@11=0.9407 leaf_hit@22=0.9588 leaf_hit@32=0.9662
+[INFO] benchmark NodeBalance epoch=10
+level1 doc_balance=1.46(max=11818/min=8087/nodes=100)
+level2 doc_balance=2.10(max=1393/min=664/nodes=1000)
+[BARRIER-PROBE][epoch10_before_doc_balance] rank=0 wait=0.26s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-23 05:12:27.793593
+[INF] end of merge index_map, 2026-10-23 05:12:31.632938
+[build_index] done: 1000 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 18/64
+[BARRIER-PROBE][epoch10_after_doc_balance] rank=0 wait=0.51s ok
+[INFO] eval DEV at epoch=10 NodeBalance=level0 doc_balance=1.14(max=4362/min=3817/nodes=10)
+level1 doc_balance=1.56(max=510/min=326/nodes=100)
+level2 doc_balance=3.56(max=64/min=18/nodes=1000)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+level2 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:5.0/5.0/5.0
+level2 min/avg/max:25.0/25.0/25.0
+result=###################################################################
+****wocot:depth1/hit@1=0.920
+****wocot:depth1/hit@16=0.996
+****wocot:depth1/hit@32=0.996
+****wocot:depth1/hit@64=0.996
+****wocot:depth2/hit@1=0.849
+****wocot:depth2/hit@16=0.989
+****wocot:depth2/hit@32=0.993
+****wocot:depth2/hit@64=0.993
+****wocot:depth3/hit@1=0.754
+****wocot:depth3/hit@16=0.952
+****wocot:depth3/hit@32=0.968
+****wocot:depth3/hit@64=0.981
+****gtcot:depth1/hit@1=0.922
+****gtcot:depth1/hit@16=0.997
+****gtcot:depth1/hit@32=0.997
+****gtcot:depth1/hit@64=0.997
+****gtcot:depth2/hit@1=0.853
+****gtcot:depth2/hit@16=0.990
+****gtcot:depth2/hit@32=0.994
+****gtcot:depth2/hit@64=0.994
+****gtcot:depth3/hit@1=0.761
+****gtcot:depth3/hit@16=0.956
+****gtcot:depth3/hit@32=0.971
+****gtcot:depth3/hit@64=0.982
+[INFO] keep active_depth=3 (already at tree_depth=3)
+[INFO] start training epoch=11 sampler info=rank=0/32, node_list=len:1000/[(9, 1, 4), (7, 6, 7), (4, 7, 5), (2, 6, 6), (1, 3, 8), (6, 6, 5), (7, 8, 2), (6, 7, 0), (2, 4, 3), (1, 2, 0), (2, 8, 6), (4, 6, 9), (8, 0, 6), (1, 9, 5), (9, 0, 8), (1, 6, 2), (0, 1, 5), (9, 0, 9), (3, 5, 9), (1, 8, 5)], doc_size=[80, 50, 67, 50, 81, 56, 56, 76, 84, 61, 78, 57, 48, 55, 65, 60, 59, 68, 96, 57], pos_queries=562464 multi_node_query_pool_size=562464
+[INFO] shuffle rank=0 seed=11_0 node_list=[(5, 2, 9), (8, 5, 6), (4, 0, 8), (8, 3, 1), (4, 7, 5), (4, 1, 2), (2, 3, 0), (2, 9, 8), (3, 6, 9), (4, 5, 1), (3, 2, 8), (8, 1, 8), (2, 6, 4), (8, 9, 4), (4, 9, 8), (6, 0, 3), (6, 5, 7), (8, 9, 7), (0, 1, 4), (9, 5, 7)]
+[INFO] precomputed leaf batches epoch=11 num_batches=2000 num_samples=256000 pool_cache_size=0 elapsed=7.77s
+[training info] epoch=11 step=0/2000 metrcis=cnt=1
+total_loss=1.01
+cot_loss=0.57
+level0/swav_loss=0.00
+level0/acc_q=0.93
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.95
+level1/acc_d=1.00
+level2/swav_loss=0.02
+level2/acc_q=0.81
+level2/acc_d=0.96
+level3/contrastive_loss=0.41
+lr=9.055e-05
+[training info] epoch=11 step=10/2000 metrcis=cnt=10
+total_loss=1.33
+cot_loss=0.50
+level0/swav_loss=0.00
+level0/acc_q=0.95
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.88
+level1/acc_d=0.99
+level2/swav_loss=0.02
+level2/acc_q=0.81
+level2/acc_d=0.94
+level3/contrastive_loss=0.80
+lr=9.050e-05
+[training info] epoch=11 step=50/2000 metrcis=cnt=40
+total_loss=1.27
+cot_loss=0.50
+level0/swav_loss=0.00
+level0/acc_q=0.94
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.89
+level1/acc_d=0.98
+level2/swav_loss=0.02
+level2/acc_q=0.81
+level2/acc_d=0.94
+level3/contrastive_loss=0.74
+lr=9.032e-05
+[training info] epoch=11 step=100/2000 metrcis=cnt=50
+total_loss=1.24
+cot_loss=0.50
+level0/swav_loss=0.00
+level0/acc_q=0.94
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.89
+level1/acc_d=0.98
+level2/swav_loss=0.02
+level2/acc_q=0.79
+level2/acc_d=0.93
+level3/contrastive_loss=0.71
+lr=9.008e-05
+[2026-10-23 05:43:26,553] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[2026-10-23 06:43:30,153] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[training info] epoch=11 step=1000/2000 metrcis=cnt=900
+total_loss=1.20
+cot_loss=0.49
+level0/swav_loss=0.00
+level0/acc_q=0.93
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.89
+level1/acc_d=0.99
+level2/swav_loss=0.02
+level2/acc_q=0.80
+level2/acc_d=0.93
+level3/contrastive_loss=0.68
+lr=8.550e-05
+[BARRIER-PROBE][train_ep11_step1000] rank=0 wait=0.00s ok
+[2026-10-23 07:43:33,754] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[2026-10-23 08:43:37,353] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[2026-10-23 09:43:40,953] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[training info] epoch=11 step=1999/2000 metrcis=cnt=1899
+total_loss=1.19
+cot_loss=0.48
+level0/swav_loss=0.00
+level0/acc_q=0.93
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.89
+level1/acc_d=0.99
+level2/swav_loss=0.02
+level2/acc_q=0.80
+level2/acc_d=0.94
+level3/contrastive_loss=0.68
+lr=7.960e-05
+[BARRIER-PROBE][epoch11_train_end] rank=0 wait=0.01s ok
+[BARRIER-PROBE][epoch11_after_save] rank=0 wait=0.00s ok
+[INFO] start benchmark at epoch=11
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-23 10:10:44.108369
+[INF] end of merge index_map, 2026-10-23 10:10:54.143579
+[build_index] done: 1000 leaf nodes (this rank), 1000000 total doc-node entries, 1000000 unique docs min/max docs: 658/1383
+[INFO] index saved to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep011/index.pt
+[INFO] index_info (this rank) = 1000/1000=1.00 leaf nodes, docs_of_node min/max/avg=658/1383/1000.00
+[INFO] index_info (global)    = 32000/1000=32.00 leaf nodes, docs_of_node min/max/avg=658/1383/1000.00
+[INF] load corpus size=7438 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/dev.jsonl vl_mode=False query_side=False
+[METRICS] hit@1=0.4683  hit@10=0.8313  hit@100=0.9514  mrr@10=0.5906  mrr@100=0.5964  leaf_hit=0.9721  leaf_mrr=0.8346  leaf_hit@1=0.7668  leaf_hit@11=0.9447  leaf_hit@22=0.9649  leaf_hit@32=0.9721  total=7456
+[INFO] min/mean/max candidate_docs=28708/32344.1/35982 min/mean/max uniq_candidate_docs=28708/32344.1/35982 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep011/bench_result_gt_cot_part0.jsonl
+[METRICS] hit@1=0.4575  hit@10=0.8219  hit@100=0.9430  mrr@10=0.5795  mrr@100=0.5852  leaf_hit=0.9655  leaf_mrr=0.8206  leaf_hit@1=0.7512  leaf_hit@11=0.9376  leaf_hit@22=0.9582  leaf_hit@32=0.9655  total=7456
+[INFO] min/mean/max candidate_docs=28509/32358.4/35760 min/mean/max uniq_candidate_docs=28509/32358.4/35760 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep011/bench_result_selfcot_0_part0.jsonl
+[METRICS] hit@1=0.4572  hit@10=0.8231  hit@100=0.9457  mrr@10=0.5803  mrr@100=0.5861  leaf_hit=0.9674  leaf_mrr=0.8223  leaf_hit@1=0.7535  leaf_hit@11=0.9399  leaf_hit@22=0.9604  leaf_hit@32=0.9674  total=7456
+[INFO] min/mean/max candidate_docs=28501/32354.7/35908 min/mean/max uniq_candidate_docs=28501/32354.7/35908 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep011/bench_result_selfcot_8_part0.jsonl
+[METRICS] hit@1=0.4631  hit@10=0.8243  hit@100=0.9474  mrr@10=0.5844  mrr@100=0.5903  leaf_hit=0.9690  leaf_mrr=0.8271  leaf_hit@1=0.7599  leaf_hit@11=0.9411  leaf_hit@22=0.9610  leaf_hit@32=0.9690  total=7456
+[INFO] min/mean/max candidate_docs=28734/32358.1/35741 min/mean/max uniq_candidate_docs=28734/32358.1/35741 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep011/bench_result_selfcot_16_part0.jsonl
+[METRICS] hit@1=0.4653  hit@10=0.8270  hit@100=0.9473  mrr@10=0.5866  mrr@100=0.5923  leaf_hit=0.9693  leaf_mrr=0.8293  leaf_hit@1=0.7627  leaf_hit@11=0.9421  leaf_hit@22=0.9612  leaf_hit@32=0.9693  total=7456
+[INFO] min/mean/max candidate_docs=28728/32363.7/35898 min/mean/max uniq_candidate_docs=28728/32363.7/35898 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep011/bench_result_selfcot_32_part0.jsonl
+[METRICS] hit@1=0.4663  hit@10=0.8274  hit@100=0.9481  mrr@10=0.5874  mrr@100=0.5931  leaf_hit=0.9697  leaf_mrr=0.8312  leaf_hit@1=0.7649  leaf_hit@11=0.9427  leaf_hit@22=0.9616  leaf_hit@32=0.9697  total=7456
+[INFO] min/mean/max candidate_docs=28804/32352.8/35898 min/mean/max uniq_candidate_docs=28804/32352.8/35898 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep011/bench_result_selfcot_64_part0.jsonl
+[METRICS] hit@1=0.4678  hit@10=0.8270  hit@100=0.9484  mrr@10=0.5887  mrr@100=0.5945  leaf_hit=0.9694  leaf_mrr=0.8314  leaf_hit@1=0.7644  leaf_hit@11=0.9427  leaf_hit@22=0.9622  leaf_hit@32=0.9694  total=7456
+[INFO] min/mean/max candidate_docs=28746/32324.5/35898 min/mean/max uniq_candidate_docs=28746/32324.5/35898 min/mean/max num_nodes=32/32.0/32
+[INFO] output written to /data/oss_bucket_0/kesi/genret/dumpsv2/model_ms_qwen1.7b_ns10td3_bst_old_cot_isw0.01_sln_beamt0.05_n32/ep011/bench_result_selfcot_80_part0.jsonl
+[INFO] benchmark gt_cot epoch=11 samples=7456 hit@1=0.4683 hit@10=0.8313 hit@100=0.9514 mrr@10=0.5906 mrr@100=0.5964 leaf_hit=0.9721 leaf_mrr=0.8346 leaf_hit@1=0.7668 leaf_hit@11=0.9447 leaf_hit@22=0.9649 leaf_hit@32=0.9721
+[INFO] benchmark selfcot_0 epoch=11 samples=7456 hit@1=0.4575 hit@10=0.8219 hit@100=0.9430 mrr@10=0.5795 mrr@100=0.5852 leaf_hit=0.9655 leaf_mrr=0.8206 leaf_hit@1=0.7512 leaf_hit@11=0.9376 leaf_hit@22=0.9582 leaf_hit@32=0.9655
+[INFO] benchmark selfcot_8 epoch=11 samples=7456 hit@1=0.4572 hit@10=0.8231 hit@100=0.9457 mrr@10=0.5803 mrr@100=0.5861 leaf_hit=0.9674 leaf_mrr=0.8223 leaf_hit@1=0.7535 leaf_hit@11=0.9399 leaf_hit@22=0.9604 leaf_hit@32=0.9674
+[INFO] benchmark selfcot_16 epoch=11 samples=7456 hit@1=0.4631 hit@10=0.8243 hit@100=0.9474 mrr@10=0.5844 mrr@100=0.5903 leaf_hit=0.9690 leaf_mrr=0.8271 leaf_hit@1=0.7599 leaf_hit@11=0.9411 leaf_hit@22=0.9610 leaf_hit@32=0.9690
+[INFO] benchmark selfcot_32 epoch=11 samples=7456 hit@1=0.4653 hit@10=0.8270 hit@100=0.9473 mrr@10=0.5866 mrr@100=0.5923 leaf_hit=0.9693 leaf_mrr=0.8293 leaf_hit@1=0.7627 leaf_hit@11=0.9421 leaf_hit@22=0.9612 leaf_hit@32=0.9693
+[INFO] benchmark selfcot_64 epoch=11 samples=7456 hit@1=0.4663 hit@10=0.8274 hit@100=0.9481 mrr@10=0.5874 mrr@100=0.5931 leaf_hit=0.9697 leaf_mrr=0.8312 leaf_hit@1=0.7649 leaf_hit@11=0.9427 leaf_hit@22=0.9616 leaf_hit@32=0.9697
+[INFO] benchmark selfcot_80 epoch=11 samples=7456 hit@1=0.4678 hit@10=0.8270 hit@100=0.9484 mrr@10=0.5887 mrr@100=0.5945 leaf_hit=0.9694 leaf_mrr=0.8314 leaf_hit@1=0.7644 leaf_hit@11=0.9427 leaf_hit@22=0.9622 leaf_hit@32=0.9694
+[INFO] benchmark NodeBalance epoch=11
+level1 doc_balance=1.44(max=11755/min=8139/nodes=100)
+level2 doc_balance=2.10(max=1383/min=658/nodes=1000)
+[BARRIER-PROBE][epoch11_before_doc_balance] rank=0 wait=0.29s ok
+[INF] load corpus size=1000000 from /data/oss_bucket_0/kesi/genret/dataset/msmarco_1m/corpus.jsonl vl_mode=False query_side=False
+[INF] start to merge index_map, 2026-10-23 10:17:10.563997
+[INF] end of merge index_map, 2026-10-23 10:17:14.339961
+[build_index] done: 1000 leaf nodes (this rank), 40960 total doc-node entries, 40960 unique docs min/max docs: 19/63
+[BARRIER-PROBE][epoch11_after_doc_balance] rank=0 wait=0.70s ok
+[INFO] eval DEV at epoch=11 NodeBalance=level0 doc_balance=1.14(max=4362/min=3819/nodes=10)
+level1 doc_balance=1.59(max=516/min=324/nodes=100)
+level2 doc_balance=3.32(max=63/min=19/nodes=1000)
+DocBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:1.0/1.0/1.0
+level2 min/avg/max:1.0/1.0/1.0
+QueryBeamCnt=level0 min/avg/max:1.0/1.0/1.0
+level1 min/avg/max:5.0/5.0/5.0
+level2 min/avg/max:25.0/25.0/25.0
+result=###################################################################
+****wocot:depth1/hit@1=0.923
+****wocot:depth1/hit@16=0.996
+****wocot:depth1/hit@32=0.996
+****wocot:depth1/hit@64=0.996
+****wocot:depth2/hit@1=0.853
+****wocot:depth2/hit@16=0.989
+****wocot:depth2/hit@32=0.992
+****wocot:depth2/hit@64=0.992
+****wocot:depth3/hit@1=0.764
+****wocot:depth3/hit@16=0.954
+****wocot:depth3/hit@32=0.971
+****wocot:depth3/hit@64=0.981
+****gtcot:depth1/hit@1=0.922
+****gtcot:depth1/hit@16=0.996
+****gtcot:depth1/hit@32=0.996
+****gtcot:depth1/hit@64=0.996
+****gtcot:depth2/hit@1=0.855
+****gtcot:depth2/hit@16=0.989
+****gtcot:depth2/hit@32=0.993
+****gtcot:depth2/hit@64=0.993
+****gtcot:depth3/hit@1=0.767
+****gtcot:depth3/hit@16=0.956
+****gtcot:depth3/hit@32=0.973
+****gtcot:depth3/hit@64=0.983
+[INFO] keep active_depth=3 (already at tree_depth=3)
+[INFO] start training epoch=12 sampler info=rank=0/32, node_list=len:1000/[(5, 2, 9), (8, 5, 6), (4, 0, 8), (8, 3, 1), (4, 7, 5), (4, 1, 2), (2, 3, 0), (2, 9, 8), (3, 6, 9), (4, 5, 1), (3, 2, 8), (8, 1, 8), (2, 6, 4), (8, 9, 4), (4, 9, 8), (6, 0, 3), (6, 5, 7), (8, 9, 7), (0, 1, 4), (9, 5, 7)], doc_size=[75, 63, 50, 65, 53, 63, 66, 69, 65, 90, 49, 49, 57, 59, 69, 68, 64, 55, 69, 51], pos_queries=562464 multi_node_query_pool_size=562464
+[INFO] shuffle rank=0 seed=12_0 node_list=[(4, 0, 9), (6, 8, 2), (4, 5, 2), (6, 9, 1), (1, 8, 9), (7, 9, 5), (9, 1, 8), (1, 9, 7), (1, 8, 4), (6, 5, 1), (3, 2, 2), (3, 7, 2), (5, 6, 8), (3, 4, 7), (6, 2, 9), (8, 7, 6), (7, 5, 5), (9, 6, 9), (5, 4, 3), (8, 5, 6)]
+[INFO] precomputed leaf batches epoch=12 num_batches=2000 num_samples=256000 pool_cache_size=0 elapsed=7.68s
+[training info] epoch=12 step=0/2000 metrcis=cnt=1
+total_loss=1.10
+cot_loss=0.53
+level0/swav_loss=0.00
+level0/acc_q=0.95
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.80
+level1/acc_d=1.00
+level2/swav_loss=0.02
+level2/acc_q=0.73
+level2/acc_d=0.98
+level3/contrastive_loss=0.54
+lr=7.960e-05
+[training info] epoch=12 step=10/2000 metrcis=cnt=10
+total_loss=1.18
+cot_loss=0.43
+level0/swav_loss=0.00
+level0/acc_q=0.94
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.91
+level1/acc_d=0.99
+level2/swav_loss=0.01
+level2/acc_q=0.83
+level2/acc_d=0.95
+level3/contrastive_loss=0.73
+lr=7.953e-05
+[training info] epoch=12 step=50/2000 metrcis=cnt=40
+total_loss=1.15
+cot_loss=0.45
+level0/swav_loss=0.00
+level0/acc_q=0.93
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.90
+level1/acc_d=0.99
+level2/swav_loss=0.02
+level2/acc_q=0.80
+level2/acc_d=0.95
+level3/contrastive_loss=0.67
+lr=7.928e-05
+[training info] epoch=12 step=100/2000 metrcis=cnt=50
+total_loss=1.06
+cot_loss=0.46
+level0/swav_loss=0.00
+level0/acc_q=0.94
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.89
+level1/acc_d=0.99
+level2/swav_loss=0.02
+level2/acc_q=0.81
+level2/acc_d=0.94
+level3/contrastive_loss=0.58
+lr=7.896e-05
+[2026-10-23 10:43:44,553] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[2026-10-23 11:43:48,153] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[2026-10-23 12:43:51,753] [INFO] [AiScheduler#1] [executor.py:362] execute_once running, len(finish_tasks): [0]
+[training info] epoch=12 step=1000/2000 metrcis=cnt=900
+total_loss=1.12
+cot_loss=0.45
+level0/swav_loss=0.00
+level0/acc_q=0.94
+level0/acc_d=1.00
+level1/swav_loss=0.01
+level1/acc_q=0.89
+level1/acc_d=0.99
+level2/swav_loss=0.02
+level2/acc_q=0.81
+level2/acc_d=0.95
+level3/contrastive_loss=0.65
+lr=7.297e-05
+[BARRIER-PROBE][train_ep12_step1000] rank=0 wait=0.00s ok
+[2026-10-23 13:16:08,854] [INFO] [AiScheduler#1] [executor.py:47] Received SIGTERM, will exit.
+[2026-10-23 13:16:08,871] [INFO] [AiScheduler#1] [heart_beat_client_thread.py:228] HeartbeatClient: stopped.
+[2026-10-23 13:16:08,885] [INFO] [AiScheduler#1] [heart_beat_client_thread.py:228] HeartbeatClient: stopped.
+[2026-10-23 13:16:08,889] [INFO] [AiScheduler#1] [heart_beat_client_thread.py:228] HeartbeatClient: stopped.
+[2026-10-23 13:16:08,892] [INFO] [AiScheduler#1] [heart_beat_client_thread.py:228] HeartbeatClient: stopped.
+[2026-10-23 13:16:08,894] [INFO] [AiScheduler#1] [heart_beat_client_thread.py:228] HeartbeatClient: stopped.
+[2026-10-23 13:16:08,897] [INFO] [AiScheduler#1] [heart_beat_client_thread.py:228] HeartbeatClient: stopped.
+[2026-10-23 13:16:08,898] [INFO] [AiScheduler#1] [heart_beat_client_thread.py:228] HeartbeatClient: stopped.
+[2026-10-23 13:16:08,900] [INFO] [AiScheduler#1] [heart_beat_client_thread.py:228] HeartbeatClient: stopped.
+[2026-10-23 13:16:08,900] [INFO] [AiScheduler#1] [worker_heartbeat_manager.py:79] WorkerHeartbeatManager: stopped.
+[2026-10-23 13:16:08,900] [INFO] [AiScheduler#1] [worker_heartbeat_manager.py:70] WorkerHeartbeatManager: handle sigterm: version alignment stopped for 8 clients
