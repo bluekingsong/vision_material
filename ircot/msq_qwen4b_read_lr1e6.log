@@ -1,0 +1,257 @@
+[INFO] split QA enabled: mode=sft_only retrieval=/data/oss_bucket_0/kesi/genret/dataset/musique/train.qg.jsonl retrieval_bs=0 sft=/data/oss_bucket_0/kesi/genret/dataset/musique/train_sft.jsonl sft_bs=8
+====Input Arguments====
+{
+  "model_name": "/data/oss_bucket_0/kesi/genret/Qwen3-4B",
+  "num_subnode": 10,
+  "tree_depth": 2,
+  "active_depth": 0,
+  "dump_model_steps": 1000,
+  "train_filename": "/data/oss_bucket_0/kesi/genret/dataset/musique/train.qg.jsonl",
+  "dev_filename": "/data/oss_bucket_0/kesi/genret/dataset/musique/dev.jsonl",
+  "corpus_filename": "/data/oss_bucket_0/kesi/genret/dataset/musique/corpus_lite.jsonl",
+  "dev_corpus_filename": null,
+  "doc_id_list_file": "/data/oss_bucket_0/kesi/genret/dataset/musique/doc_id_list.json",
+  "save_path": "/data/oss_bucket_0/kesi/ircot/dumps/model_msq_qwen4b_read_lr1e6",
+  "load_path": null,
+  "epochs": 150,
+  "sinkhorn_epsilon": 0.08,
+  "split_group_size": 2,
+  "i2c_temperature": 0.1,
+  "leaf_temp": 0.05,
+  "lr": 1e-06,
+  "warmup_ratio": 0.01,
+  "acc_thres": 0.9,
+  "balance_thres": [
+    1.3,
+    2.5
+  ],
+  "doc_index_first": false,
+  "remove_params": "",
+  "local_rank": 0,
+  "deepspeed_config": "ds_config.json",
+  "cl_weight": 0.5,
+  "leaf_cl_factor": 1,
+  "leaf_node_size": 0,
+  "max_doc_tokens": 128,
+  "max_query_tokens": 128,
+  "beam_size_limit": 8,
+  "random_max_query_tokens": null,
+  "num_workers": 4,
+  "batch_size": 0,
+  "beam_doc_topk": -1,
+  "expand_doc_topk": 1,
+  "min_p": 0.0,
+  "improved_nce": false,
+  "fn_threshold": 0.1,
+  "max_balance_mode": false,
+  "online_cot_bs": 64,
+  "distributed_index": false,
+  "index_gather_gloo": false,
+  "split_thres": 100,
+  "nce_margin": 0,
+  "internal_swav_weight": 0.01,
+  "single_node_dup": 1,
+  "binary_leaf_loss": false,
+  "no_internal_cl": false,
+  "cot_weight": 1,
+  "qa_cot_weight": 1,
+  "leaf_cot_weight": -1,
+  "inc_cotw": false,
+  "query_mode": "non_cot",
+  "attn_mask_4d": false,
+  "teacher_assign_mode": false,
+  "last_world_size": 8,
+  "lr_decay_ratio": 1.0,
+  "lr_cosine_decay_epochs": 10,
+  "lr_min": 1e-06,
+  "topk_leaf_node": 16,
+  "leaf_expand_mode": "doc",
+  "neg_query_ratio": 0.25,
+  "vl_orig_tokens": 36,
+  "vl_crop_tokens": 144,
+  "vl_resize_raw": false,
+  "random_img_ratio": -1,
+  "doc_centric": true,
+  "unfreeze_vit": false,
+  "enable_deepstack_image": false,
+  "ignore_pair_thres": 1,
+  "kgcate_margin": 0.0,
+  "leaf_cl_margin": 0.0,
+  "hard_swav_label": false,
+  "stable_tree_bs": 16,
+  "auxio": false,
+  "enable_graph_sinkhorn": false,
+  "doc_sinkhorn_mode": false,
+  "leaf_project_dim": 0,
+  "sample_leaf_negative": true,
+  "qa_mode": true,
+  "train_sft_filename": "/data/oss_bucket_0/kesi/genret/dataset/musique/train_sft.jsonl",
+  "dev_sft_filename": "/data/oss_bucket_0/kesi/genret/dataset/musique/dev_sft.jsonl",
+  "qa_sft_batch_size": 8,
+  "qa_sft_max_length": 1280,
+  "attn_impl": "auto",
+  "node_rank": 0,
+  "node_size": 8,
+  "split_group_world_size": 4,
+  "split_group_id": 0,
+  "cot_prompt": "Instruct:Given a web search query, retrieve relevant passages that answer the query\nQuery:%s"
+}
+[INFO] num_token_added:12 vl_mode=False
+[INFO] Using attn_implementation=flash_attention_2
+[INFO] split_group=0/2 ranks=[0, 1, 2, 3]
+[INFO] QA SFT rows=205155 batches=3206
+[INFO] QA dev SFT rows=27770 batches=434
+[INFO] training mode=SFT only; retrieval data, tree updates, and retrieval evaluation are disabled
+[INFO] start pure SFT epoch=0 num_batch=3206
+[training info] mode=sft epoch=0 step=0/3206 metrics=cnt=1
+total_loss=2.66
+qa_cot_loss=2.66
+qa_sft_tokens=782.00
+qa_main_sft_loss=2.81
+qa_main_sft_tokens=724.00
+qa_relevance_sft_loss=0.79
+qa_relevance_sft_tokens=58.00
+lr=3.119e-10
+[training info] mode=sft epoch=0 step=10/3206 metrics=cnt=10
+total_loss=2.51
+qa_cot_loss=2.51
+qa_sft_tokens=807.70
+qa_main_sft_loss=2.83
+qa_main_sft_tokens=710.50
+qa_relevance_sft_loss=0.53
+qa_relevance_sft_tokens=97.20
+lr=3.431e-09
+[training info] mode=sft epoch=0 step=50/3206 metrics=cnt=40
+total_loss=2.39
+qa_cot_loss=2.39
+qa_sft_tokens=726.30
+qa_main_sft_loss=2.72
+qa_main_sft_tokens=633.75
+qa_relevance_sft_loss=0.56
+qa_relevance_sft_tokens=92.55
+lr=1.591e-08
+[training info] mode=sft epoch=0 step=100/3206 metrics=cnt=50
+total_loss=2.40
+qa_cot_loss=2.40
+qa_sft_tokens=785.70
+qa_main_sft_loss=2.60
+qa_main_sft_tokens=697.38
+qa_relevance_sft_loss=0.60
+qa_relevance_sft_tokens=88.32
+lr=3.150e-08
+[training info] mode=sft epoch=0 step=1000/3206 metrics=cnt=900
+total_loss=1.13
+qa_cot_loss=1.13
+qa_sft_tokens=777.69
+qa_main_sft_loss=1.30
+qa_main_sft_tokens=688.91
+qa_relevance_sft_loss=0.12
+qa_relevance_sft_tokens=88.78
+lr=3.122e-07
+[2026-11-05 18:17:36,457] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] mode=sft epoch=0 step=2000/3206 metrics=cnt=1000
+total_loss=0.51
+qa_cot_loss=0.51
+qa_sft_tokens=756.71
+qa_main_sft_loss=0.58
+qa_main_sft_tokens=667.60
+qa_relevance_sft_loss=0.03
+qa_relevance_sft_tokens=89.11
+lr=6.241e-07
+[training info] mode=sft epoch=0 step=3000/3206 metrics=cnt=1000
+total_loss=0.32
+qa_cot_loss=0.32
+qa_sft_tokens=755.70
+qa_main_sft_loss=0.37
+qa_main_sft_tokens=665.08
+qa_relevance_sft_loss=0.03
+qa_relevance_sft_tokens=90.61
+lr=9.361e-07
+[training info] mode=sft epoch=0 step=3205/3206 metrics=cnt=1205
+total_loss=0.31
+qa_cot_loss=0.31
+qa_sft_tokens=755.65
+qa_main_sft_loss=0.36
+qa_main_sft_tokens=665.02
+qa_relevance_sft_loss=0.03
+qa_relevance_sft_tokens=90.63
+lr=1.000e-06
+[BARRIER-PROBE][epoch0_sft_train_end] rank=0 wait=0.01s ok
+[dev SFT] epoch=0 dev/qa_cot_loss=0.380303 dev/qa_perplexity=1.46273 dev/qa_sft_tokens=2.9848e+06 dev/qa_main_sft_loss=0.421649 dev/qa_main_perplexity=1.52447 dev/qa_main_sft_tokens=2.66882e+06 dev/qa_relevance_sft_loss=0.0310942 dev/qa_relevance_perplexity=1.03158 dev/qa_relevance_sft_tokens=315990 dev/qa_main_token_accuracy=0.87132 dev/qa_relevance_token_accuracy=0.988987
+[BARRIER-PROBE][epoch0_sft_after_save] rank=0 wait=0.00s ok
+[INFO] start pure SFT epoch=1 num_batch=3206
+[training info] mode=sft epoch=1 step=0/3206 metrics=cnt=1
+total_loss=0.01
+qa_cot_loss=0.01
+qa_sft_tokens=89.00
+qa_main_sft_loss=0.00
+qa_main_sft_tokens=0.00
+qa_relevance_sft_loss=0.01
+qa_relevance_sft_tokens=89.00
+lr=1.000e-06
+[training info] mode=sft epoch=1 step=10/3206 metrics=cnt=10
+total_loss=0.25
+qa_cot_loss=0.25
+qa_sft_tokens=808.50
+qa_main_sft_loss=0.29
+qa_main_sft_tokens=724.80
+qa_relevance_sft_loss=0.03
+qa_relevance_sft_tokens=83.70
+lr=1.000e-06
+[training info] mode=sft epoch=1 step=50/3206 metrics=cnt=40
+total_loss=0.24
+qa_cot_loss=0.24
+qa_sft_tokens=771.70
+qa_main_sft_loss=0.27
+qa_main_sft_tokens=677.15
+qa_relevance_sft_loss=0.03
+qa_relevance_sft_tokens=94.55
+lr=1.000e-06
+[training info] mode=sft epoch=1 step=100/3206 metrics=cnt=50
+total_loss=0.25
+qa_cot_loss=0.25
+qa_sft_tokens=792.20
+qa_main_sft_loss=0.28
+qa_main_sft_tokens=704.20
+qa_relevance_sft_loss=0.03
+qa_relevance_sft_tokens=88.00
+lr=1.000e-06
+[2026-11-05 19:17:39,601] [INFO] [AiScheduler#1] [executor.py:361] execute_once running, len(finish_tasks): [0]
+[training info] mode=sft epoch=1 step=1000/3206 metrics=cnt=900
+total_loss=0.24
+qa_cot_loss=0.24
+qa_sft_tokens=762.43
+qa_main_sft_loss=0.28
+qa_main_sft_tokens=673.69
+qa_relevance_sft_loss=0.02
+qa_relevance_sft_tokens=88.75
+lr=1.000e-06
+[training info] mode=sft epoch=1 step=2000/3206 metrics=cnt=1000
+total_loss=0.22
+qa_cot_loss=0.22
+qa_sft_tokens=763.16
+qa_main_sft_loss=0.26
+qa_main_sft_tokens=672.79
+qa_relevance_sft_loss=0.02
+qa_relevance_sft_tokens=90.37
+lr=1.000e-06
+[training info] mode=sft epoch=1 step=3000/3206 metrics=cnt=1000
+total_loss=0.21
+qa_cot_loss=0.21
+qa_sft_tokens=759.99
+qa_main_sft_loss=0.24
+qa_main_sft_tokens=671.19
+qa_relevance_sft_loss=0.02
+qa_relevance_sft_tokens=88.79
+lr=1.000e-06
+[training info] mode=sft epoch=1 step=3205/3206 metrics=cnt=1205
+total_loss=0.21
+qa_cot_loss=0.21
+qa_sft_tokens=758.63
+qa_main_sft_loss=0.24
+qa_main_sft_tokens=669.72
+qa_relevance_sft_loss=0.02
+qa_relevance_sft_tokens=88.91
+lr=1.000e-06
+[BARRIER-PROBE][epoch1_sft_train_end] rank=0 wait=0.00s ok
+[dev SFT] epoch=1 dev/qa_cot_loss=0.422702 dev/qa_perplexity=1.52608 dev/qa_sft_tokens=2.9848e+06 dev/qa_main_sft_loss=0.469221 dev/qa_main_perplexity=1.59875 dev/qa_main_sft_tokens=2.66882e+06 dev/qa_relevance_sft_loss=0.0298048 dev/qa_relevance_perplexity=1.03025 dev/qa_relevance_sft_tokens=315990 dev/qa_main_token_accuracy=0.866078 dev/qa_relevance_token_accuracy=0.989066
